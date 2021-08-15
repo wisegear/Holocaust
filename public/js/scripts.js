@@ -7,6 +7,9 @@ const closenav = document.querySelector(".close-nav");
 const usermenu = document.querySelector(".user-menu");
 const usermenutoggle = document.querySelector(".user-menu-toggle");
 
+const mobileusermenu = document.querySelector(".mobile-user-menu");
+const mobileusermenutoggle = document.querySelector(".mobile-user-menu-toggle");
+
 // Add Event Listeners
 
 // Open and close mobile nav, also remove hamburger when open
@@ -25,4 +28,10 @@ closenav.addEventListener("click", () => {
 
 usermenutoggle.addEventListener("click", () => {
     usermenu.classList.toggle("hidden");
+});
+
+// Add event listener to open the mobile user menu
+
+mobileusermenutoggle.addEventListener("click", () => {
+    mobileusermenu.classList.toggle("hidden");
 });
