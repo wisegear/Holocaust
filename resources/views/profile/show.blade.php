@@ -2,43 +2,40 @@
 
 <div class="w-3/4 mx-auto">
 	<div class="text-center mb-4">
-		<p class="font-semibold">You are viewing the user profile for {{ $user->name }}</p>
+		<p class="font-semibold mb-2 text-lg">You're viewing the user profile for {{ $user->name }}</p>
+		<div class="flex space-x-4 justify-center">
+			<a href="{{ $user->twitter }}"><img src="/images/site/twitter.svg" alt="twiiter" class="inline-block h-4 w-4 fill-current text-blue-500"></a>					
+			<a href="{{ $user->facebook }}"><img src="/images/site/facebook.svg" alt="facebook" class="inline-block h-4 w-4"></a>					
+			<a href="{{ $user->linkedin }}"><img src="/images/site/linkedin.svg" alt="linkedin" class="inline-block h-4 w-4"></a>	
+		</div>				
 	</div>
 	<div class="flex justify-evenly items-center my-10">
 		<div class="">
 			<img src="{{ asset("images/avatars/$user->avatar") }}" class="rounded-md shadow-md">
 		</div>
 		<div class="">
-			<ul class="text-sm space-y-1">
-				@if (!empty($user->website))
-				<li class=""><a href="{{ $user->website }}">{{ $user->website }}</a></li>
-				@endif
+			<ul class="text-sm space-y-1 flex flex-col justify-center">
 
-				@if (!empty($user->location))
-				<li class="">{{ $user->location }}</li>
-				@endif
+				<li class="">
+					<img src="/images/site/globe.svg" alt="" class="inline-block h-4 w-4">					
+					<a href="{{ $user->website }}" class="hover:text-red-500">{{ $user->website }}</a>
+				</li>
 
-				@if ($user->email_visible)
-				<li class="">{{ $user->email }}</li>
-				@endif
+				
+				<li class="">
+					<img src="/images/site/geo-alt-fill.svg" alt="" class="inline-block h-4 w-4">					
+					{{ $user->location }}
+				</li>
 
-				<div class="flex space-x-4 text-sm">
-					@if (!empty($user->twitter))
-					<li class=""><a href="{{ $user->twitter }}"></a>Twitter</li>
-					@endif
+				<li class="">
+					<img src="/images/site/envelope-fill.svg" alt="" class="inline-block h-4 w-4">					
+					{{ $user->email }}
+				</li>
 
-					@if (!empty($user->facebook))
-					<li class=""><a href="{{ $user->facebook }}">Facebook</a></li>
-					@endif
-
-					@if (!empty($user->linkedin))
-					<li class=""><a href="{{ $user->linkedin }}">LinkedIn</a></li>
-					@endif
-				</div>
 			</ul>
 		</div>
 	</div>
-	<div class="">
+	<div class="text-center">
 	@if (empty($user->bio))
 				<p class="border p-2">User has not provided any information about themselves.</p>
 			@else
@@ -48,7 +45,7 @@
 
 		@if (Auth::user()->name === $user->name || Auth::user()->has_user_role('Admin'))
 			<div class="my-4 text-center">
-				<a class="border rounded-md py-1 px-2 text-sm bg-green-500" href="/profile/{{ $user->name }}/edit" role="button">Edit Profile</a>
+				<a class="border rounded-md py-1 px-2 text-sm bg-green-400 text-gray-800 font-semibold" href="/profile/{{ $user->name }}/edit" role="button">Edit Profile</a>
 			</div>
 		@endif
 </div>

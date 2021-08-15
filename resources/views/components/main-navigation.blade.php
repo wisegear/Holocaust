@@ -9,10 +9,11 @@
     </div>
     <div class="space-x-4 hidden md:block md:text-right md:w-2/12 relative">
         @if(Auth::check())
-            <p class="">Hi, {{ Auth::user()->name }}<button class="user-menu-toggle pl-2 text-sm">&#9660;</button></p>
+            <p class="">Hi, {{ Auth::user()->name }}<button class="user-menu-toggle pl-2 text-sm text-red-500 hover:text-red-300">&#9660;</button></p>
             <div class="user-menu absolute flex flex-col w-full text-center bg-gray-100 top-10 right-0 p-4 space-y-4 hidden">
             <a href="/logout" class="hover:text-red-500">Logout</a>
             <a href="/profile/{{ Auth::user()->name }}" class="hover:text-red-500">Profile</a>
+            <a href="/support" class="hover:text-red-500">Support Tickets</a>
             </div>
         @else
             <a href="/login" class="hover:text-red-500">Login</a>

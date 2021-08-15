@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\SupportController;
 use App\Http\Middleware\IsMember;
 use App\Http\Middleware\IsAdmin;
 
@@ -22,6 +23,7 @@ Route::get('/', [PagesController::class, 'home']);
 Route::middleware([IsMember::class])->group(function() {
 
     Route::resource('profile', UserProfileController::class);
+    Route::resource('support', SupportController::class);
 
 });
 

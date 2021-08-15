@@ -89,11 +89,7 @@ class UserProfileController extends Controller
     public function update(Request $request, $id)
     {
 
-    {
-
         $validator = Validator::make($request->all(), [
-
-            //'name' => 'required|max:255',
             'email' => 'required|max:255',
             'image' => 'image|mimes:jpeg,jpg,gif,png|max:500',
             'bio' => 'max:500',
@@ -198,7 +194,7 @@ class UserProfileController extends Controller
 
         return back()->with('status', 'User Profile has been updated.');
 
-    }
+
 
     }
 
