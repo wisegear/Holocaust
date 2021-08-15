@@ -7,7 +7,7 @@ use App\Models\BlogPosts;
 use App\Models\BlogCategories;
 use DB;
 
-class blogsidebar extends Component
+class BlogSidebar extends Component
 {
     /**
      * Create a new component instance.
