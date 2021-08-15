@@ -7,7 +7,7 @@ use App\Models\BlogPosts;
 use App\Models\BlogCategories;
 use DB;
 
-class Blogside extends Component
+class blogside extends Component
 {
 
     public $categories;
