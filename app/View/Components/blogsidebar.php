@@ -3,6 +3,8 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\BlogPosts;
+use App\Models\BlogCategories;
 use DB;
 
 class blogsidebar extends Component
@@ -24,9 +26,9 @@ class blogsidebar extends Component
      */
     public function render()
     {
-        $categories = \App\Models\BlogCategories::with('BlogPosts')->get();
-        $featured = \App\Models\BlogPosts::with('Users')->where('featured', true)->orderBy('created_at', 'desc')->limit(3)->get();
-        $unpublished = \App\Models\BlogPosts::where('published', false)->get();
+        $categories = BlogCategories::with('BlogPosts')->get();
+        $featured = BlogPosts::with('Users')->where('featured', true)->orderBy('created_at', 'desc')->limit(3)->get();
+        $unpublished = BlogPosts::where('published', false)->get();
         $popular_tags = DB::table('post_tags')
             ->leftjoin('blog_tags', 'blog_tags.id', '=', 'post_tags.tag_id')
             ->select('post_tags.tag_id', 'name', DB::raw('count(*) as total'))
