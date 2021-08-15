@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\SupportController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ImagesController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Middleware\IsMember;
 use App\Http\Middleware\IsAdmin;
 
@@ -19,11 +22,20 @@ use App\Http\Middleware\IsAdmin;
 */
 
 Route::get('/', [PagesController::class, 'home']);
+Route::get('about', [PagesController::class, 'about']);
+Route::get('contact', [PagesController::class, 'contact']);
+Route::resource('blog', BlogController::class);
 
 Route::middleware([IsMember::class])->group(function() {
 
     Route::resource('profile', UserProfileController::class);
     Route::resource('support', SupportController::class);
+
+});
+
+Route::middleware([IsAdmin::class])->group(function() {
+
+    Route::resource('/media', ImagesController::class);
 
 });
 

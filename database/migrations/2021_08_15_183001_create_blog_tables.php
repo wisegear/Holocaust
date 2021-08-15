@@ -1,0 +1,96 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateBlogTables extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+
+        // Create categories table
+        Schema::create('blog_categories', function(Blueprint $table)
+        {
+            $table->id('id');
+            $table->string('name', 50);
+            $table->timestamps();
+        });
+
+        // Create Blog Tables
+        Schema::create('blog_posts', function (Blueprint $table) {
+            $table->id('id');
+            $table->string('image')->default('blog_post_default.jpg');
+            $table->string('title');
+            $table->string('slug');
+            $table->text('excerpt');
+            $table->boolean('featured')->default(false);
+            $table->boolean('published')->default(true);
+            $table->text('body');
+            $table->Biginteger('user_id')->unsigned();
+            $table->Biginteger('categories_id')->unsigned();
+            $table->timestamps();
+        
+
+            // Create foreign keys
+
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
+            
+            $table->foreign('categories_id')
+            ->references('id')
+            ->on('blog_categories')
+            ->onDelete('cascade');
+        
+        });
+
+
+        // Create blog tags table
+        Schema::create('blog_tags', function(Blueprint $table)
+        {
+            $table->id('id');
+            $table->string('name', 50);
+            $table->timestamps();
+        });            
+
+        // Create pivot table for blog tags
+        Schema::create('post_tags', function(Blueprint $table)
+        {
+            $table->id('id');
+            $table->Biginteger('tag_id')->unsigned();
+            $table->Biginteger('post_id')->unsigned();
+            
+            // Create foreign keys
+            $table->foreign('tag_id')
+            ->references('id')
+            ->on('blog_tags')
+            ->onDelete('cascade');
+            
+            $table->foreign('post_id')
+            ->references('id')
+            ->on('blog_posts')
+            ->onDelete('cascade');
+        });
+
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('blog_categories');
+        Schema::drop('blog_posts');
+        Schema::drop('blog_tags');
+        Schema::drop('post_tags');
+    }
+}
