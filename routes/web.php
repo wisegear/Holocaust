@@ -8,8 +8,15 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\TimelineController;
 use App\Http\Middleware\IsMember;
 use App\Http\Middleware\IsAdmin;
+
+use App\Http\Controllers\Admin\AdminBlogController;
+use App\Http\Controllers\Admin\AdminSupportController;
+use App\Http\Controllers\Admin\BlogCategoriesController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +34,9 @@ Route::get('about', [PagesController::class, 'about']);
 Route::get('contact', [PagesController::class, 'contact']);
 Route::resource('quotes', QuotesController::class);
 Route::resource('blog', BlogController::class);
+Route::resource('timeline', TimelineController::class);
+
+// Protected routes only accessible by member group.
 
 Route::middleware([IsMember::class])->group(function() {
 
@@ -35,9 +45,16 @@ Route::middleware([IsMember::class])->group(function() {
 
 });
 
-Route::middleware([IsAdmin::class])->group(function() {
+// Protected Admin routes only accessible by admin
 
+Route::middleware([IsAdmin::class])->group(function() {
+    
+    Route::get('admin', [AdminController::class, 'index']);
     Route::resource('/media', ImagesController::class);
+    Route::resource('/admin/users', UsersController::class)->only(['index', 'destroy']);
+	Route::resource('/admin/blog', AdminBlogController::class);
+	Route::resource('/admin/support', AdminSupportController::class);
+	route::resource('/admin/blog-categories', BlogCategoriesController::class)->except(['create', 'show', 'edit']);
 
 });
 

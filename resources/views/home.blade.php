@@ -14,11 +14,12 @@
                 <li>Support System</li>
                 <li>Blog</li>
                 <li>Quotes Section</li>
+                <li>Admin Panel</li>
+                <li>Timeline</li>
             </ul>
             
             <ul>
             <h3>In progress:</h3>
-                <li>Timeline</li>
                 <li>Gallery (hard one)</li>
             </ul>
             

@@ -9,6 +9,7 @@ use App\Models\BlogCategories;
 use App\Models\BlogTags;
 use App\Models\BlogPostTags;
 use App\Models\Quotes;
+use App\Models\Timeline;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,5 +27,6 @@ class DatabaseSeeder extends Seeder
         BlogTags::factory(100)->create();
         BlogPostTags::factory(200)->create();
         $this->call(quotes_seeder::class);
+        $this->call(timeline_seeder::class);
     }
 }
