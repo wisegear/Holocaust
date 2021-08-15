@@ -17,7 +17,18 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->boolean('email_visible')->default(false);
+            $table->string('avatar')->default('default.png');
+            $table->String('bio', 500)->nullable();
+            $table->string('website')->nullable();
+            $table->string('location')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->boolean('trusted')->default(false);
+            $table->boolean('lock')->default(true);
+            $table->String('notes')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
