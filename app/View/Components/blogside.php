@@ -7,7 +7,7 @@ use App\Models\BlogPosts;
 use App\Models\BlogCategories;
 use DB;
 
-class BlogSidebar extends Component
+class blogside extends Component
 {
 
     public $categories;
@@ -42,7 +42,7 @@ class BlogSidebar extends Component
     public function render()
     {
         
-        return view('components.blogsidebar');
+        return view('components.blogside');
 
     }
 }
