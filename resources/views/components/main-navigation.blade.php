@@ -5,6 +5,7 @@
     <div class="space-x-4 hidden md:block md:text-center md:w-8/12">
         <a href="/" class="hover:text-red-500">Home</a>
         <a href="blog" class="hover:text-red-500">Blog</a>
+        <a href="quotes" class="hover:text-red-500">Quotes</a>
         <a href="about" class="hover:text-red-500">About</a>
         <a href="contact" class="hover:text-red-500">Contact</a>
     </div>

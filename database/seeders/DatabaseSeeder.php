@@ -8,6 +8,7 @@ use App\Models\BlogPosts;
 use App\Models\BlogCategories;
 use App\Models\BlogTags;
 use App\Models\BlogPostTags;
+use App\Models\Quotes;
 
 class DatabaseSeeder extends Seeder
 {
@@ -24,5 +25,6 @@ class DatabaseSeeder extends Seeder
         BlogPosts::factory(50)->create();
         BlogTags::factory(100)->create();
         BlogPostTags::factory(200)->create();
+        $this->call(quotes_seeder::class);
     }
 }
