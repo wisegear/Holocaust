@@ -36,7 +36,7 @@
         </div>
     </div>
     <div class="flex flex-col md:w-3/12">
-        <x-blogsidebar/>
+       
 	</div>
 </div>
 

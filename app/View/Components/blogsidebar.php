@@ -26,7 +26,7 @@ class Blogsidebar extends Component
      */
     public function render()
     {
-        
+        $categories = BlogCategories::with('BlogPosts')->get();
         $featured = BlogPosts::with('Users')->where('featured', true)->orderBy('created_at', 'desc')->limit(3)->get();
         $unpublished = BlogPosts::where('published', false)->get();
         $popular_tags = DB::table('post_tags')
