@@ -35,13 +35,6 @@ class blogsidebar extends Component
             ->limit(15)
             ->get();
 
-            $sidebar_data = array (
-                'categories' => $categories,
-                'popular_tags' => $popular_tags,
-                'featured' => $featured,
-                'unpublished' => $unpublished,
-            );
-
-        return view('components.blogsidebar')->with($sidebar_data, 'sidebar_data');
+        return view('components.blogsidebar', compact('categories','featured','unpublished','popular_tags'));
     }
 }
