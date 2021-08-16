@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\BlogCategoriesController;
 use App\Http\Controllers\Admin\AdminQuotesController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\AdminTimelineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,7 @@ Route::middleware([IsAdmin::class])->group(function() {
     Route::resource('/admin/users', UsersController::class)->only(['index', 'destroy']);
 	Route::resource('/admin/blog', AdminBlogController::class);
     Route::get('/admin/quotes', [AdminQuotesController::class, 'index']);
+    Route::get('/admin/timeline', [AdminTimelineController::class, 'index']);
 	Route::resource('/admin/support', AdminSupportController::class);
 	route::resource('/admin/blog-categories', BlogCategoriesController::class)->except(['create', 'show', 'edit']);
 

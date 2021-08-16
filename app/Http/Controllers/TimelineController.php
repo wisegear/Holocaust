@@ -64,7 +64,13 @@ class TimelineController extends Controller
       $new_event->title = $request->title;
       $new_event->event_date = $request->event_date;
       $new_event->description = $request->description;
-      $new_event->published = $request->published;
+        // Check if the event is to be published
+
+        if ($request->published === 'on') {
+            
+         $new_event->published = 1; } else {
+             $new_event->published = 0;
+     }
       
       // Save the new event to the DB
       $new_event->save();
