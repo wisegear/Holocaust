@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-layout>
 
 <script type="text/javascript">
 	tinymce.init({
@@ -109,4 +107,4 @@
 <script>
 	window.onload=postImage;
 </script>
-@endsection
+</x-layout>
