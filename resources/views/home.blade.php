@@ -11,6 +11,11 @@
         </div>
     </div>
 
+    <div class="text-center text-sm my-5 text-gray-600">
+        <p>{{ $quote->quote }}</p>
+        <p class="font-semibold">-- {{ $quote->author }}</p>
+    </div>
+
     <div class="border-b my-5 text-sm font-bold text-red-500">
         <p>Recent Blog Posts</p>
     </div>

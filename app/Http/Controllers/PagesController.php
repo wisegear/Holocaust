@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BlogPosts;
+use App\Models\Quotes;
 
 class PagesController extends Controller
 {
     public function home()
     {
+        $quote = Quotes::all()->random(); 
         $posts = BlogPosts::where('published', true)->orderBy('created_at', 'desc')->limit(3)->get();
 
-        return view('home', compact('posts'));
+        return view('home', compact('posts', 'quote'));
     }
 
     public function about()
