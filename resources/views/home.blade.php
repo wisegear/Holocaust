@@ -2,9 +2,10 @@
 
     <div class="">
         <h1 class="text-center text-lg font-bold pb-2">Holocaust History Site </h1>
-        <p class="mx-auto text-center w-1/2 text-sm py-2">This site is dedicated to the history of the Holocaust.  I am currently creating this site as at August 2021.  My previous site built
-         nearly 20 years ago using only HTML needed a new home and this is it.  Stay tuned, lots in progress.
-        </p>
+        <div class="text-center text-sm my-5 text-gray-600">
+            <p>{{ $quote->quote }}</p>
+            <p class="font-semibold">-- {{ $quote->author }}</p>
+        </div>
         <div class="flex justify-center py-2 gap-4">
             <a href="/important"><button class="border rounded-md text-red-500 uppercase py-1 px-2 text-xs hover:text-red-800">Important</button></a>
             <a href="/about"><button class="border rounded-md text-red-500 uppercase py-1 px-2 text-xs hover:text-red-800">About</button></a>
@@ -12,8 +13,7 @@
     </div>
 
     <div class="text-center text-sm my-5 text-gray-600">
-        <p>{{ $quote->quote }}</p>
-        <p class="font-semibold">-- {{ $quote->author }}</p>
+
     </div>
 
     <div class="border-b my-5 text-sm font-bold text-red-500">
