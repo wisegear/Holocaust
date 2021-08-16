@@ -16,6 +16,10 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/scripts.js') }}" defer></script>
+
+        <!-- Tiny MCE -->
+        <script src="https://cdn.tiny.cloud/1/a1rn9rzvnlulpzdgoe14w7kqi1qpfsx7cx9am2kbgg226dqz/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
     </head>
 
     <body class="font-sans antialiased">
