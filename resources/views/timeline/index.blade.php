@@ -33,17 +33,17 @@
          </ul>
       </div>
                 
-      <div class="flex flex-col">
+      <div class="flex flex-col w-4/5 mx-auto space-y-10">
          @foreach ($events->chunk(2) as $two_events )
             @foreach($two_events as $event)
                @if($loop->odd)
                   <div class="flex space-x-10">
                      <div class="w-1/2 flex items-center space-x-5 border rounded-md">
-                        <div class="border p-2 text-center bg-indigo-100">
+                        <div class="border-r p-4 text-center text-red-500">
                            <span class="text-sm font-bold">{{ date('d M', strtotime($event->event_date)) }}</span>
                            <span class="font-bold">{{ date('Y', strtotime($event->event_date)) }}</span>
                         </div>
-                        <div>
+                        <div class="p-4 space-y-4">
                            <h2 class="font-bold">{{ $event->title }}</h2>
                            <p class="text-sm">{{ $event->description }}</p>
                         </div>
@@ -53,19 +53,20 @@
                      </div>
                   </div>
                @elseif($loop->even)
-                  <div class="flex">
+                  <div class="flex space-x-10">
                      <div class="w-1/2">
                         <!-- Intentionally blank -->
                      </div>
                      <div class="w-1/2 flex items-center space-x-5 border rounded-md">
-                        <div class="border p-2 text-center bg-indigo-100">
-                           <span class="text-sm font-bold">{{ date('d M', strtotime($event->event_date)) }}</span>
-                           <span class="font-bold">{{ date('Y', strtotime($event->event_date)) }}</span>
-                        </div>
-                        <div>
+                     <div class="p-4">
                            <h2 class="font-bold">{{ $event->title }}</h2>
                            <p class="text-sm">{{ $event->description }}</p>
                         </div>
+                        <div class="border-l p-4 text-center text-red-500">
+                           <span class="text-sm font-bold">{{ date('d M', strtotime($event->event_date)) }}</span>
+                           <span class="font-bold">{{ date('Y', strtotime($event->event_date)) }}</span>
+                        </div>
+
                      </div>
                   </div>     
                @endif
