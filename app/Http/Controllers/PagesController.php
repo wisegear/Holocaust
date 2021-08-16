@@ -20,4 +20,9 @@ class PagesController extends Controller
     {
         return view('contact');
     }
+
+    public function important()
+    {
+        return view('important');
+    }
 }

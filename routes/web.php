@@ -31,13 +31,14 @@ use App\Http\Controllers\Admin\UsersController;
 */
 
 Route::get('/', [PagesController::class, 'home']);
-Route::get('about', [PagesController::class, 'about']);
-Route::get('contact', [PagesController::class, 'contact']);
-Route::resource('quotes', QuotesController::class);
-Route::resource('blog', BlogController::class);
-Route::resource('timeline', TimelineController::class);
+Route::get('/about', [PagesController::class, 'about']);
+Route::get('/contact', [PagesController::class, 'contact']);
+Route::get('/important', [PagesController::class, 'important']);
+Route::resource('/quotes', QuotesController::class);
+Route::resource('/blog', BlogController::class);
+Route::resource('/timeline', TimelineController::class);
 
-Route::resource('gallery', GalleryController::class);
+Route::resource('/gallery', GalleryController::class);
 Route::get('/gallery/albums/{albums}', [GalleryController::class, 'albums']);
 Route::get('/gallery/images/{album}', [GalleryController::class, 'images']);
 Route::get('gallery/search/tags/{tag}', [GalleryController::class, 'tag_search']);

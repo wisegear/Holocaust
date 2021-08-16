@@ -1,4 +1,4 @@
-<div class="flex items-center py-2 border-b justify-between">
+<div class="flex items-center py-4 border-b justify-between">
     <div class="md:w-2/12">
         <h2 class="text-gray-500 text-lg font-bold"><a href="/" class="hover:text-red-500">The Holocaust</a></h2>
     </div>
@@ -8,7 +8,6 @@
         <a href="/quotes" class="hover:text-red-500">Quotes</a>
         <a href="/timeline" class="hover:text-red-500">Timeline</a>
         <a href="/gallery" class="hover:text-red-500">Gallery</a>
-        <a href="/about" class="hover:text-red-500">About</a>
         <a href="/contact" class="hover:text-red-500">Contact</a>
     </div>
     <div class="space-x-4 hidden md:block md:text-right md:w-2/12 relative">
