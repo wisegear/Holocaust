@@ -19,7 +19,7 @@ class CreateTimelineTable extends Migration
           $table->string('title');
           $table->date('event_date');
           $table->string('description'); 
-          $table->boolean('published');
+          $table->boolean('published')->nullable();
         });
     }
 

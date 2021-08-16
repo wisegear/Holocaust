@@ -10,6 +10,7 @@ use App\Models\Comments;
 use App\Models\BlogPosts;
 use App\Models\UserRolesPivot;
 use App\Models\Quotes;
+use App\Models\Timeline;
 
 class AdminController extends Controller
 {
@@ -30,6 +31,10 @@ class AdminController extends Controller
 		// Quotes info
 		$quote_count = Quotes::all();
 		$quotes_hidden = Quotes::where('published', false)->get();
+
+		// Timeline info
+		$timeline_count = Timeline::all();
+		$timeline_hidden = Timeline::where('published', false)->get();
 
     	//Support info
     	$tickets = Support::all();
@@ -55,6 +60,8 @@ class AdminController extends Controller
 			'blogunpublished' => $blogunpublished,
 			'quote_count' => $quote_count,
 			'quotes_hidden' => $quotes_hidden,
+			'timeline_count' => $timeline_count,
+			'timeline_hidden' => $timeline_hidden,
 
      	);
 

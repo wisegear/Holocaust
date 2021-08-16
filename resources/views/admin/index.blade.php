@@ -31,6 +31,16 @@
 
 	<div class="border rounded-md p-3 w-2/12 bg-gray-50">
 		<div class="">
+			<h2 class="text-xl font-bold text-center">Timeline</h2>
+			<h2 class="text-indigo-500 text-center">{{ $timeline_count->count() }}</h2>
+		</div>
+		<div class="mt-5 text-center text-sm text-gray-500">
+			<p class="">Not Published:  <span class="">{{ $timeline_hidden->count() }}</span></p>
+		</div>
+	</div>
+
+	<div class="border rounded-md p-3 w-2/12 bg-gray-50">
+		<div class="">
 			<h2 class="text-xl font-bold text-center">Support</h2>
 			<h2 class="text-indigo-500 text-center">{{ $tickets->count() }}</h2>
 		</div>

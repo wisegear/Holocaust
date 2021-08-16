@@ -116,7 +116,13 @@ class TimelineController extends Controller
       $edit_event->title = $request->title;
       $edit_event->event_date = $request->event_date;
       $edit_event->description = $request->description;
-      $edit_event->published = $request->published;
+        // Check if the event is to be published
+
+        if ($request->published === 'on') {
+            
+         $edit_event->published = 1; } else {
+             $edit_event->published = 0;
+     }
       
       // Save the changes
       $edit_event->save();
