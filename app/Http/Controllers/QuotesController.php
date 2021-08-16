@@ -28,7 +28,7 @@ class QuotesController extends Controller
     public function index()
     {
         // Get data elements
-        $quotes = Quotes::all();
+        $quotes = Quotes::paginate(12);
       
         // Prepare data sent to view
         $data = array('quotes' => $quotes,

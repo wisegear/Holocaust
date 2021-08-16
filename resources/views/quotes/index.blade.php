@@ -1,6 +1,7 @@
 <x-layout>
 
 <div class="flex gap-10">
+  
   <div class="w-9/12 grid grid-cols-3 gap-10">
     @foreach ($quotes as $quote)
       <div class="border rounded-md p-2 text-sm bg-gray-50">
@@ -17,4 +18,9 @@
     @endcan
   </div>
 </div>
+
+<div class="w-1/2 my-10">
+      {{ $quotes->links() }}
+</div>
+
 </x-layout>
