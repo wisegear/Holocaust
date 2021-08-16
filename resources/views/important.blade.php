@@ -1,7 +1,7 @@
 <x-layout>
 
     <div class="w-4/5 mx-auto">
-        <img src="/images/site/important.png" alt="" class="rounded-md">
+        <img src="/images/site/important.png" alt="" class="rounded-md shadow-xl">
         <div class="prose max-w-screen-xl py-4">
         <h2>Important</h2>
         <p>Please understand that this is a historical website that focuses on an event that did happen.  I apologise to the majority of visitors
