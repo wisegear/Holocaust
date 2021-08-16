@@ -11,8 +11,20 @@
         </div>
     </div>
 
+    <div class="border-b my-5 text-sm font-bold text-red-500">
+        <p>Recent Blog Posts</p>
+    </div>
 
-    <article class="prose max-w-screen-xl">
+    <div class="flex justify-between gap-10">
+        @foreach($posts as $post)
+        <div class="w-full">
+            <img src="/images/media/small-{{ $post->image }}" alt="" class="w-full rounded-md shadow-md">
+            <a href="/blog/{{ $post->slug }}" class="hover:text-red-500 block py-2 font-semibold">{{ $post->title }}</a>
+        </div>
+        @endforeach
+    </div>
+
+    <article class="prose max-w-screen-xl mt-20">
         <h1 class="">Update</h1>
         <p class="">This is a new website, a rebuild of my old Holocaust History website built neatly 20 years ago.  
             Trying to go high tech by learning new web software and programming so it may take a while to get everything built.</p>

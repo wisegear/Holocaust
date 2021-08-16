@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\BlogPosts;
 
 class PagesController extends Controller
 {
     public function home()
     {
-        return view('home');
+        $posts = BlogPosts::where('published', true)->orderBy('created_at', 'desc')->limit(3)->get();
+
+        return view('home', compact('posts'));
     }
 
     public function about()
