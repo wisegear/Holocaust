@@ -7,6 +7,12 @@ use DB;
 
 class BlogSidebar extends Component
 {
+
+    public $categories;
+    public $featured;
+    public $unpublished;
+    public $popular_tags;
+
     /**
      * Create a new component instance.
      *
@@ -14,7 +20,16 @@ class BlogSidebar extends Component
      */
     public function __construct()
     {
-        //
+        $this->categories = \App\Models\BlogCategories::with('BlogPosts')->get();
+        $this->featured = \App\Models\BlogPosts::with('Users')->where('featured', true)->orderBy('created_at', 'desc')->limit(3)->get();
+        $this->unpublished = \App\Models\BlogPosts::where('published', false)->get();
+        $this->popular_tags = DB::table('post_tags')
+        ->leftjoin('blog_tags', 'blog_tags.id', '=', 'post_tags.tag_id')
+        ->select('post_tags.tag_id', 'name', DB::raw('count(*) as total'))
+        ->groupBy('post_tags.tag_id', 'name')
+        ->orderBy('total', 'desc')
+        ->limit(15)
+        ->get();
     }
 
     /**
@@ -24,25 +39,6 @@ class BlogSidebar extends Component
      */
     public function render()
     {
-
-        $categories = \App\Models\BlogCategories::with('BlogPosts')->get();
-        $featured = \App\Models\BlogPosts::with('Users')->where('featured', true)->orderBy('created_at', 'desc')->limit(3)->get();
-        $unpublished = \App\Models\BlogPosts::where('published', false)->get();
-        $popular_tags = DB::table('post_tags')
-            ->leftjoin('blog_tags', 'blog_tags.id', '=', 'post_tags.tag_id')
-            ->select('post_tags.tag_id', 'name', DB::raw('count(*) as total'))
-            ->groupBy('post_tags.tag_id', 'name')
-            ->orderBy('total', 'desc')
-            ->limit(15)
-            ->get();
-
-            $sidebar_data = array (
-                'categories' => $categories,
-                'popular_tags' => $popular_tags,
-                'featured' => $featured,
-                'unpublished' => $unpublished,
-            );
-
-        return view('components.blog-sidebar')->with($sidebar_data, 'sidebar_data');
+       return view('components.blog-sidebar');
     }
 }
