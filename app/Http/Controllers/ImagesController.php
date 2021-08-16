@@ -11,6 +11,8 @@ use Auth;
 
 class ImagesController extends Controller
 {
+    // Set media path
+    public $media_path = '/images/media/';
 
     public function __construct()
     {
@@ -59,40 +61,40 @@ class ImagesController extends Controller
                 $media_name = time() . '-' . $media->getClientOriginalName();
 
                 // Move the file to the blog image directory.
-                $media->move(public_path() . '/images/media/', $media_name);
+                $media->move(public_path() . $this->media_path, $media_name);
 
                 //Make the image, note I use sprintf, different strokes...
-                $make = Image::make(sprintf(public_path() . '/images/media/' . '%s', $media_name))
-                          ->save(public_path() . '/images/media/' . $media_name);
+                $make = Image::make(sprintf(public_path() . $this->media_path . '%s', $media_name))
+                          ->save(public_path() . $this->media_path . $media_name);
 
                 // Assign the new image name for the database save.
-                $new_media->original = $media_name;
+                $new_media->name = $media_name;
 
                 // Create a smaller image constrained by 300px height at 50% quality
 
-                $small = Image::make(public_path() . '/images/media/' . $media_name);
+                $small = Image::make(public_path() . $this->media_path . $media_name);
                 $small->fit(350, 175);
-                $small->save(public_path() . '/images/media/' . 'small' . '-' . $media_name, 50);
+                $small->save(public_path() . $this->media_path . 'small' . '-' . $media_name, 50);
 
-                $new_media->small = 'small' . '-' . $media_name;
+                //$new_media->small = 'small' . '-' . $media_name;
 
                 // Create a medium image constrained by a specific size height at 75% quality
 
-                $medium = Image::make(public_path() . '/images/media/' . $media_name);
+                $medium = Image::make(public_path() . $this->media_path . $media_name);
                 $medium->fit(1000, 300);
 
-                $medium->save(public_path() . '/images/media/' . 'medium' . '-' . $media_name, 50);
+                $medium->save(public_path() . $this->media_path . 'medium' . '-' . $media_name, 50);
 
-                $new_media->medium = 'medium' . '-' . $media_name;
+                //$new_media->medium = 'medium' . '-' . $media_name;
 
                 // Create a medium image constrained by a specific size height at 75% quality
 
-                $large = Image::make(public_path() . '/images/media/' . $media_name);
+                $large = Image::make(public_path() . $this->media_path . $media_name);
                 $large->fit(1200, 300);
 
-                $large->save(public_path() . '/images/media/' . 'large' . '-' . $media_name, 50);
+                $large->save(public_path() . $this->media_path . 'large' . '-' . $media_name, 50);
 
-                $new_media->large = 'large' . '-' . $media_name;
+                //$new_media->large = 'large' . '-' . $media_name;
 
 
                 $new_media->save();

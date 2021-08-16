@@ -25,8 +25,8 @@
 <div class="grid grid-cols-5 gap-10">
         @foreach ($all_media as $item)
           <div class="">
-              <img src="{{ asset("images/media/$item->small") }}" class="w-full max-h-60 border border-gray-900">
-              <input class="w-full text-center mt-1 text-xs text-gray-600" type="text" name="image" id="imagename" value="{{ $item->original }}">
+              <img src="/images/media/small-{{ $item->name }}" class="w-full max-h-60 border border-gray-900">
+              <input class="w-full text-center mt-1 text-xs text-gray-600" type="text" name="image" id="imagename" value="{{ $item->name }}">
           </div>
          
         @endforeach
