@@ -28,7 +28,7 @@
 					
 					<div class="form-group">
 						<label for="Published" class="">Published?</label>
-						<input type="checkbox" id="published" name="published" value="1">								
+						<input type="checkbox" id="published" name="published">								
 					</div>
 					
 					<div class="form-group">

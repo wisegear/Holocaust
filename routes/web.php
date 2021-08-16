@@ -16,6 +16,7 @@ use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\AdminSupportController;
 use App\Http\Controllers\Admin\BlogCategoriesController;
+use App\Http\Controllers\Admin\AdminQuotesController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UsersController;
 
@@ -60,6 +61,7 @@ Route::middleware([IsAdmin::class])->group(function() {
     Route::resource('/media', ImagesController::class);
     Route::resource('/admin/users', UsersController::class)->only(['index', 'destroy']);
 	Route::resource('/admin/blog', AdminBlogController::class);
+    Route::get('/admin/quotes', [AdminQuotesController::class, 'index']);
 	Route::resource('/admin/support', AdminSupportController::class);
 	route::resource('/admin/blog-categories', BlogCategoriesController::class)->except(['create', 'show', 'edit']);
 

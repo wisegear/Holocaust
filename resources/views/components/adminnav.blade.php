@@ -7,6 +7,7 @@
         <a href="/admin" class="hover:text-red-500">Admin Home</a>
         <a href="/admin/users" class="hover:text-red-500">Users</a>
         <a href="/admin/blog" class="hover:text-red-500">Blog</a>
+        <a href="/admin/quotes" class="hover:text-red-500">Quotes</a>
         <a href="/admin/support" class="hover:text-red-500">Support</a>
     </div>
     <div class="space-x-4 hidden md:block md:text-right md:w-2/12 relative">

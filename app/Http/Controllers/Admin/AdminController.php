@@ -9,6 +9,7 @@ use App\Models\Support;
 use App\Models\Comments;
 use App\Models\BlogPosts;
 use App\Models\UserRolesPivot;
+use App\Models\Quotes;
 
 class AdminController extends Controller
 {
@@ -25,6 +26,10 @@ class AdminController extends Controller
     	$users_pending = UserRolesPivot::all()->where('role_id', '===', 2)->count();
     	$users_banned = UserRolesPivot::all()->where('role_id', '===', 1)->count();
         $users_active = UserRolesPivot::all()->where('role_id', '===', 3)->count();
+
+		// Quotes info
+		$quote_count = Quotes::all();
+		$quotes_hidden = Quotes::where('published', false)->get();
 
     	//Support info
     	$tickets = Support::all();
@@ -48,7 +53,8 @@ class AdminController extends Controller
     		'users_banned' => $users_banned,
 			'blogposts' => $blogposts,
 			'blogunpublished' => $blogunpublished,
-            'logged' => $logged,
+			'quote_count' => $quote_count,
+			'quotes_hidden' => $quotes_hidden,
 
      	);
 

@@ -28,7 +28,7 @@ class QuotesController extends Controller
     public function index()
     {
         // Get data elements
-        $quotes = Quotes::paginate(12);
+        $quotes = Quotes::where('published', true)->paginate(12);
       
         // Prepare data sent to view
         $data = array('quotes' => $quotes,
@@ -60,8 +60,12 @@ class QuotesController extends Controller
       // Associate the form results to the DB fields
       $new_quote->author = $request->quote_author;
       $new_quote->quote = $request->quote_text;
-      $new_quote->published = $request->published;
-      
+      if ($request->published === 'on') {
+            
+         $new_quote->published = 1; } else {
+            $new_quote->published = 0;
+     }
+
       // Save the new event to the DB
       $new_quote->save();
       
@@ -105,7 +109,13 @@ class QuotesController extends Controller
       // Update the existing record
       $edit_quote->author = $request->quote_author;
       $edit_quote->quote = $request->quote_text;
-      $edit_quote->published = $request->published;
+        // Check if the quote is to be published
+
+        if ($request->published === 'on') {
+            
+         $edit_quote->published = 1; } else {
+            $edit_quote->published = 0;
+     }
       
       // Save the changes
       $edit_quote->save();
