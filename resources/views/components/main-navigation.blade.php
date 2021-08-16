@@ -4,11 +4,12 @@
     </div>
     <div class="space-x-4 hidden md:block md:text-center md:w-8/12">
         <a href="/" class="hover:text-red-500">Home</a>
-        <a href="blog" class="hover:text-red-500">Blog</a>
-        <a href="quotes" class="hover:text-red-500">Quotes</a>
-        <a href="timeline" class="hover:text-red-500">Timeline</a>
-        <a href="about" class="hover:text-red-500">About</a>
-        <a href="contact" class="hover:text-red-500">Contact</a>
+        <a href="/blog" class="hover:text-red-500">Blog</a>
+        <a href="/quotes" class="hover:text-red-500">Quotes</a>
+        <a href="/timeline" class="hover:text-red-500">Timeline</a>
+        <a href="/gallery" class="hover:text-red-500">Gallery</a>
+        <a href="/about" class="hover:text-red-500">About</a>
+        <a href="/contact" class="hover:text-red-500">Contact</a>
     </div>
     <div class="space-x-4 hidden md:block md:text-right md:w-2/12 relative">
         @if(Auth::check())
@@ -45,11 +46,12 @@
         </svg>
         </button>
         <a href="/" class="hover:text-red-500">Home</a>
-        <a href="blog" class="hover:text-red-500">Blog</a>
-        <a href="quotes" class="hover:text-red-500">Quotes</a>
-        <a href="timeline" class="hover:text-red-500">Timeline</a>
-        <a href="about" class="hover:text-red-500">About</a>
-        <a href="contact" class="hover:text-red-500">Contact</a>     
+        <a href="/blog" class="hover:text-red-500">Blog</a>
+        <a href="/quotes" class="hover:text-red-500">Quotes</a>
+        <a href="/timeline" class="hover:text-red-500">Timeline</a>
+        <a href="/gallery" class="hover:text-red-500">Gallery</a>
+        <a href="/about" class="hover:text-red-500">About</a>
+        <a href="/contact" class="hover:text-red-500">Contact</a>     
         @if(Auth::check())
             <p class="">{{ Auth::user()->name }}<button class="mobile-user-menu-toggle pl-2 text-sm text-red-500 hover:text-red-300">&#9660;</button></p>
             <div class="mobile-user-menu relative flex flex-col w-full text-center p-4 space-y-4 ">

@@ -16,11 +16,12 @@
                 <li>Quotes Section</li>
                 <li>Admin Panel</li>
                 <li>Timeline</li>
+                <li>Gallery (hard one)</li>
             </ul>
             
             <ul>
             <h3>In progress:</h3>
-                <li>Gallery (hard one)</li>
+                <li>Code tidy up and testing</li>
             </ul>
             
             <ul>

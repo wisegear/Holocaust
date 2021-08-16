@@ -9,6 +9,7 @@ use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\TimelineController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Middleware\IsMember;
 use App\Http\Middleware\IsAdmin;
 
@@ -35,6 +36,11 @@ Route::get('contact', [PagesController::class, 'contact']);
 Route::resource('quotes', QuotesController::class);
 Route::resource('blog', BlogController::class);
 Route::resource('timeline', TimelineController::class);
+
+Route::resource('gallery', GalleryController::class);
+Route::get('/gallery/albums/{albums}', [GalleryController::class, 'albums']);
+Route::get('/gallery/images/{album}', [GalleryController::class, 'images']);
+Route::get('gallery/search/tags/{tag}', [GalleryController::class, 'tag_search']);
 
 // Protected routes only accessible by member group.
 

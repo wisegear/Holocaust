@@ -28,5 +28,10 @@ class DatabaseSeeder extends Seeder
         BlogPostTags::factory(200)->create();
         $this->call(quotes_seeder::class);
         $this->call(timeline_seeder::class);
+        $this->call(gallery_categories_seeder::class);
+        $this->call(gallery_albums_seeder::class);
+        $this->call(gallery_tags_seeder::class);
+        $this->call(gallery_images_seeder::class);
+        $this->call(gallery_tags_pivot_seeder::class);
     }
 }
