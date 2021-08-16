@@ -17,7 +17,7 @@ class CreateQuotesTable extends Migration
             $table->increments('id');
             $table->string('author');
             $table->string('quote');
-            $table->boolean('published')->nullable();
+            $table->boolean('published')->default(1);
         });
     }
 

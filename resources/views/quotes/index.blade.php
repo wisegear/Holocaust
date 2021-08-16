@@ -12,10 +12,17 @@
   </div>
 
   <div class="w-3/12">
-    <h2 class="text-xl font-semibold text-gray-500">Sidebar</h2>
     @can('Admin')
-      <a href="/quotes/create" role="button" class="border rounded-md p-1 bg-green-500">Create Quote</a>
+      <div class="text-center">
+        <a href="/quotes/create" role="button" class="border rounded-md p-1 bg-green-300 text-xs">Create Quote</a>
+      </div>
     @endcan
+    <div class="flex flex-col mb-5">
+      <h2 class="text-lg font-bold">Popular Authors</h2>
+      @foreach ($unique as $item)
+        <a href="#" class="py-1 hover:text-red-500">{{$item}}</a>
+        @endforeach
+    </div>
   </div>
 </div>
 

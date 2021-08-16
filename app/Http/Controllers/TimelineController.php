@@ -31,7 +31,7 @@ class TimelineController extends Controller
    public function index()
    {
       //  Get data for the view
-      $timeline_events = Timeline::all();
+      $timeline_events = Timeline::where('published', true)->get();
 
 		// Prepare array to pass all the data to the view.
 		$data = array(	'timeline_events' => $timeline_events

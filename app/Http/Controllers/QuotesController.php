@@ -29,13 +29,11 @@ class QuotesController extends Controller
     {
         // Get data elements
         $quotes = Quotes::where('published', true)->paginate(12);
-      
-        // Prepare data sent to view
-        $data = array('quotes' => $quotes,
-                   );
-      
+
+        $unique = Quotes::distinct('author')->limit(10)->pluck('author');
+           
         //  Return quotes index page
-        return view ('quotes.index')->with($data);
+        return view ('quotes.index', compact('quotes', 'unique'));
     }
 
 	//*******************************************************

@@ -1,44 +1,43 @@
 <x-layout>
 
-	<div id="create-form" class="row-fluid">
-		<div class="container">
-			<div class="col-md-12">
-				<h1>Edit an existing Timeline Event</h1>
-				<p>Enter a new event below, use the text editor to format the text exactly as you would want others to 
+	<div>
+		<div class="">
+			<div class="mb-10">
+				<h1 class="text-xl text-center font-bold">Edit Timeline Event</h1>
+				<p class="text-center text-gray-500 text-sm">Enter a new event below, use the text editor to format the text exactly as you would want others to 
 				see it.</p>
-				<hr>
 			</div>
 			
-			<div class="col-md-12"> 
+			<div class="w-1/2 mx-auto"> 
 
-				<form action="/timeline/{{ $timeline_event->id }}" method="POST">
-	 			{{ csrf_field() }}
-				{{ method_field('PUT') }}
+				<form method="POST" action="/timeline/{{ $timeline_event->id }}">
+				{{ csrf_field() }}
+				{{ method_field('PUT')}}
+
+				<div class="space-y-6">
 				
-				<div class="form-group">
-				
-					<div class="form-group">
-						<label for="title">Title</label>
-						<input type="text" id="title" name="title" value="{{ $timeline_event->title }}" class="">
+					<div class="">
+						<label for="title" class="block">Event Title</label>
+						<input type="text" id="title" name="title" class="w-full" value="{{$timeline_event->title}}">
 					</div>
 					
-					<div class="form-group">
-						<label for="date">Date</label>
-						<input type="date" id="event_date" name="event_date" value="{{ $timeline_event->event_date }}" class="">
+					<div class="">
+						<label for="event_date" class="block">Event Date</label>
+						<input type="date" id="event_date" name="event_date" class="" value="{{$timeline_event->event_date}}">
 					</div>	
 					
-					<div class="form-group">
-						<label for="description">Description</label>
-						<textarea id="description" name="description" class="">{{ $timeline_event->description }}</textarea>
+					<div class="">
+						<label for="description" class="block">Description</label>
+						<textarea id="description" name="description" class="w-full">{{$timeline_event->description}}</textarea>
 					</div>	
 					
-					<div class="form-group">
+					<div class="">
 						<label for="Published" class="">Published?</label>
-						<input type="checkbox" id="published" name="published" checked="checked">								
+						<input type="checkbox" id="published" name="published" checked="checked">						
 					</div>
 					
-					<div class="form-group">
-						<button role="submit">Submit</button>
+					<div class="">
+						<button type="submit" class="border rounded-md text-sm py-1 px-2 bg-green-300">Submit</button>
 					</div>	
 					
 				</div>
@@ -47,11 +46,6 @@
 				</form>
 
 			</div> <!-- end col-md-12 -->			
-			
-			
-			
-			
-			
 			
 		</div>
 	</div>
