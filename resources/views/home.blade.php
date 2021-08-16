@@ -5,7 +5,10 @@
         <p class="">This is a new website, a rebuild of my old Holocaust History website built neatly 20 years ago.  
             Trying to go high tech by learning new web software and programming so it may take a while to get everything built.</p>
         <p class="">The real challenge will be moving everything from an old html site of thousands of pages to this new database driven one :)</p>
-        <p>Stay tuned!  Last updated 10th August 2021.</p>
+        <p>At this stage I have completed the sections that are going to require the most amount of manual work.  Uploading images, entering all the timeline events and so on.
+            For now I am going to focus on building out the site design, tidy the code and start inputting.  The site is really messy as I have not been worrying about layout until now.</p>
+        </p>
+        <p>Stay tuned!  Last updated 16th August 2021.</p>
         <div class="flex justify-evenly">
             <ul>
             <h3>Completed so far:</h3>
