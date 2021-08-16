@@ -33,15 +33,15 @@
          </ul>
       </div>
                 
-      <div class="w-4/5 mx-auto">
+      <div class="flex flex-col">
          @foreach ($events->chunk(2) as $two_events )
             @foreach($two_events as $event)
                @if($loop->odd)
-                  <div class="flex">
-                     <div class="w-1/2 flex items-center space-x-5">
-                        <div>
-                           {{ date('dM', strtotime($event->event_date)) }}
-                           {{ date('Y', strtotime($event->event_date)) }}
+                  <div class="flex space-x-10">
+                     <div class="w-1/2 flex items-center space-x-5 border rounded-md">
+                        <div class="border p-2 text-center bg-indigo-100">
+                           <span class="text-sm font-bold">{{ date('d M', strtotime($event->event_date)) }}</span>
+                           <span class="font-bold">{{ date('Y', strtotime($event->event_date)) }}</span>
                         </div>
                         <div>
                            <h2 class="font-bold">{{ $event->title }}</h2>
@@ -57,20 +57,20 @@
                      <div class="w-1/2">
                         <!-- Intentionally blank -->
                      </div>
-                     <div class="w-1/2 flex items-center space-x-5">
-                        <div>
-                           {{ date('dM', strtotime($event->event_date)) }}
-                           {{ date('Y', strtotime($event->event_date)) }}
+                     <div class="w-1/2 flex items-center space-x-5 border rounded-md">
+                        <div class="border p-2 text-center bg-indigo-100">
+                           <span class="text-sm font-bold">{{ date('d M', strtotime($event->event_date)) }}</span>
+                           <span class="font-bold">{{ date('Y', strtotime($event->event_date)) }}</span>
                         </div>
                         <div>
                            <h2 class="font-bold">{{ $event->title }}</h2>
                            <p class="text-sm">{{ $event->description }}</p>
                         </div>
                      </div>
-                  </div>      
+                  </div>     
                @endif
             @endforeach
-         @endforeach
+         @endforeach 
       </div>
 
 </x-layout>
