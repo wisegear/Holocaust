@@ -33,8 +33,49 @@
          </ul>
       </div>
                 
-      <div class="">
-         @foreach ($timeline_events->chunk(2) as $events)
+      <div class="w-4/5 mx-auto">
+         @foreach ($events->chunk(2) as $two_events )
+            @foreach($two_events as $event)
+               @if($loop->odd)
+                  <div class="flex">
+                     <div class="w-1/2 flex items-center space-x-5">
+                        <div>
+                           {{ date('dM', strtotime($event->event_date)) }}
+                           {{ date('Y', strtotime($event->event_date)) }}
+                        </div>
+                        <div>
+                           <h2 class="font-bold">{{ $event->title }}</h2>
+                           <p class="text-sm">{{ $event->description }}</p>
+                        </div>
+                     </div>
+                     <div class="w-1/2">
+                        <!-- Intentionally blank -->
+                     </div>
+                  </div>
+               @elseif($loop->even)
+                  <div class="flex">
+                     <div class="w-1/2">
+                        <!-- Intentionally blank -->
+                     </div>
+                     <div class="w-1/2 flex items-center space-x-5">
+                        <div>
+                           {{ date('dM', strtotime($event->event_date)) }}
+                           {{ date('Y', strtotime($event->event_date)) }}
+                        </div>
+                        <div>
+                           <h2 class="font-bold">{{ $event->title }}</h2>
+                           <p class="text-sm">{{ $event->description }}</p>
+                        </div>
+                     </div>
+                  </div>      
+               @endif
+            @endforeach
+         @endforeach
+      </div>
+
+</x-layout>
+
+<!--
             <div class="flex my-10">
             @foreach ($events as $event)
                <div class="flex">
@@ -54,7 +95,4 @@
                </div>
             @endforeach
             </div>
-         @endforeach
-      </div>
-
-</x-layout>
+-->

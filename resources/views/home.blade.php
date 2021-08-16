@@ -4,7 +4,7 @@
         <h1 class="text-center text-lg font-bold pb-2">Holocaust History Site </h1>
         <div class="text-center text-sm my-5 text-gray-600">
             <p>{{ $quote->quote }}</p>
-            <p class="font-semibold">-- {{ $quote->author }}</p>
+            <p class="font-semibold text-red-500">-- {{ $quote->author }}</p>
         </div>
         <div class="flex justify-center py-2 gap-4">
             <a href="/important"><button class="border rounded-md text-red-500 uppercase py-1 px-2 text-xs hover:text-red-800">Important</button></a>
