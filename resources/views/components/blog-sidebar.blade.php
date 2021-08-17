@@ -30,10 +30,6 @@
 					@foreach($featured as $feature)
 						<div class="mb-3">
 							<p class="mb-1"><a href="/blog/{{ $feature->slug }}">{!! $feature->title !!}</a></p>
-<!-- 							<ul class="list-inline mb-1 reduced-font-size">
-								<li class="list-inline-item"><i class="fa fa-user pr-1" aria-hidden="true"> </i> <a href="/profile/{{ $feature->users->name }}">{{ $feature->users->name }}</a></li>
-								<li class="list-inline-item"><i class="fa fa-clock-o pr-1" aria-hidden="true"> </i> {{ $feature->created_at->diffForHumans() }}</li>
-							</ul> -->
 							<span class="">{!! Str::limit($feature->text, 75) !!}</span>
 						</div>
 					@endforeach

@@ -15,7 +15,13 @@
          </div>
       @endcan
 
-      <div class="my-10 w-4/5 mx-auto">
+      <form method="get" action="/blog" class="mt-10 my-5">
+         <div class="w-1/2 mx-auto">
+            <input type="text" class="border border-gray-300 rounded-md w-full text-sm" id="search" name="search" placeholder="Enter search term and press return">
+         </div>
+		</form>
+
+      <div class="mb-10 w-4/5 mx-auto">
          <ul class="flex justify-evenly gap-5">
             <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">Earlier</a></li>
             <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">1933</a></li>
