@@ -15,7 +15,7 @@
          </div>
       @endcan
 
-      <form method="get" action="/blog" class="mt-10 my-5">
+      <form method="get" action="/timeline" class="mt-10 my-5">
          <div class="w-1/2 mx-auto">
             <input type="text" class="border border-gray-300 rounded-md w-full text-sm" id="search" name="search" placeholder="Enter search term and press return">
          </div>
@@ -25,7 +25,9 @@
          <ul class="flex justify-center gap-5">
          <li class="border rounded-md p-1 text-xs bg-red-100 hover:bg-red-200 font-bold" role="button"><a href="/timeline?year=earlier">Earlier</a></li>
          @foreach ($uniqueYears as $year)
-            <li class="border rounded-md p-1 text-xs bg-red-50 hover:bg-red-100" role="button"><a href="/timeline?year={{$year}}">{{$year}}</a></li>
+            @if ($year > 1932 and $year < 1946)
+               <li class="border rounded-md p-1 text-xs bg-red-50 hover:bg-red-100" role="button"><a href="/timeline?year={{$year}}">{{$year}}</a></li>
+            @endif
          @endforeach 
          <li class="border rounded-md p-1 text-xs bg-red-100 hover:bg-red-200 font-bold" role="button"><a href="/timeline?year=later">Later</a></li>
          </ul>
@@ -66,25 +68,3 @@
       </div>
 
 </x-layout>
-
-<!--
-            <div class="flex my-10">
-            @foreach ($events as $event)
-               <div class="flex">
-                  <h3 class="text-indigo-500">{{ $event->title }}</h3>
-                     <p>@if (Auth::user() && Auth::user()->has_user_role('Admin'))
-                        <form action="/timeline/{{ $event->id }}" METHOD="POST" onsubmit="return confirm('Really delete?');">
-                        {{ csrf_field() }}
-                        {{ method_field('DELETE') }}
-                           <input class="" role="button" type="submit" value="delete">
-                           <a class="btn btn-outlined btn-warning btn-xs" href="/timeline/{!! $event->id !!}/edit" role="button">-Edit-</a>
-                        </form>
-                     @endif</p>
-               </div>
-               <div class="">
-                  <p>{{ $event->event_date }}</p>
-                  <p>{{ $event->description }}</p>
-               </div>
-            @endforeach
-            </div>
--->

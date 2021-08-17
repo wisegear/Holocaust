@@ -30,6 +30,7 @@ class TimelineController extends Controller
    
    public function index()
    {
+
       // Determine if a year has been selected and action.
       if (isset($_GET['year']))
       {
@@ -52,9 +53,17 @@ class TimelineController extends Controller
 
          }
       
-      // Return all events
-      } else {
+      // did the user use the search box?
+      } elseif (isset($_GET['search']))
+      {
+         $events = Timeline::where('published', true)
+            ->where(function ($query) {
+               $query->where('title', 'LIKE', '%' . $_GET['search'] . '%')
+                  ->orWhere('description', 'LIKE', '%' . $_GET['search'] . '%');
+                  
+         })->paginate(12);
 
+      } else {    
          $events = Timeline::orderBy('event_date', 'asc')->get();
       }
 
