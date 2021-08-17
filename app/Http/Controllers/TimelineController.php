@@ -30,13 +30,32 @@ class TimelineController extends Controller
    
    public function index()
    {
+      // Determine if a year has been selected and action.
       if (isset($_GET['year']))
       {
-         $events = Timeline::whereYear('event_date', $_GET['year'])->get();
+         $year = $_GET['year'];
 
+         // If the year is < 1933
+         if ( $year === 'earlier' ) {
+
+            $events = Timeline::whereYear('event_date', '<', 1933)->orderBy('event_date', 'asc')->get();
+         
+         // If the year is > 1945
+         } elseif ( $year === 'later' ) {
+
+            $events = Timeline::whereYear('event_date', '>', 1945)->orderBy('event_date', 'asc')->get();
+         
+         // If the year is between 1933-1945
+         } else {
+
+            $events = Timeline::whereYear('event_date', $year)->orderBy('event_date', 'asc')->get();
+
+         }
+      
+      // Return all events
       } else {
 
-         $events = Timeline::where('published', true)->get();
+         $events = Timeline::orderBy('event_date', 'asc')->get();
       }
 
       //  Pick out the years
