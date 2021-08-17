@@ -15,32 +15,32 @@ class gallery_albums_seeder extends Seeder
     public function run()
     {
         GalleryAlbums::create([
-		'name' => 'Auschwitz',
+		'name' => 'auschwitz',
 		'gallery_categories_id' => 1	
 		]);
 
 		GalleryAlbums::create([
-		'name' => 'Hitler',
+		'name' => 'hitler',
 		'gallery_categories_id' => 2	
 		]);
 
 		GalleryAlbums::create([
-		'name' => 'Poland',
+		'name' => 'poland',
 		'gallery_categories_id' => 3	
 		]);
 		
 		GalleryAlbums::create([
-		'name' => 'Camps',
+		'name' => 'camps',
 		'gallery_categories_id' => 4	
 		]);
 
 		GalleryAlbums::create([
-		'name' => 'Unsorted',
+		'name' => 'unsorted',
 		'gallery_categories_id' => 2	
 		]);
 			
 		GalleryAlbums::create([
-		'name' => 'Test',
+		'name' => 'test',
 		'gallery_categories_id' => 1	
 		]);
 			

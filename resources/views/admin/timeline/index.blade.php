@@ -6,13 +6,14 @@
 </div>
 
 <div class="">
-    <table class="text-center table-auto border-separate border">
+    <table class="text-center table-auto border">
         <thead class="border">
             <tr class="border bg-gray-50">
                 <th class="border w-1/12">ID</th>
                 <th class="border w-3/12">Date</th>
                 <th class="border w-1/12">Title</th>
                 <th class="border w-1/12">Desc</th>
+                <th class="border w-1/12">Published?</th>
                 <th class="border w-1/12">Action</th>
             </tr>
         </thead>
@@ -20,9 +21,10 @@
         @foreach ($timeline as $event)
             <tr class="border">
                 <td class="border text-sm">{{ $event->id }}</td>
-                <td class="border text-sm">{{ $event->event_date }}</td>
+                <td class="border text-sm">{{ $event->event_date->format('d-m-Y') }}</td>
                 <td class="border text-sm">{{ $event->title }}</td>
                 <td class="border w-4/12 text-sm p-2">{{ $event->description }}</td>
+                <td class="border text-sm">{{ $event->published }}</td>
                 <td class="border py-2">
                 <form action="/timeline/{{ $event->id }}" method="POST" onsubmit="return confirm('Do you really want to delete this event?');">
                     {{ csrf_field() }}

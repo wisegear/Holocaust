@@ -15,23 +15,23 @@ class gallery_categories_seeder extends Seeder
     public function run()
     {
         GalleryCategories::create([
-		'name' => 'Camps',
+		'name' => 'camps',
 		]);
 
 		GalleryCategories::create([
-		'name' => 'People',
+		'name' => 'people',
 		]);
 
 		GalleryCategories::create([
-		'name' => 'Places',
+		'name' => 'places',
 		]);
 		
 		GalleryCategories::create([
-		'name' => 'Colour',
+		'name' => 'colour',
 		]);
 			
 		GalleryCategories::create([
-		'name' => 'Filler',
+		'name' => 'filler',
 		]);
 			
 

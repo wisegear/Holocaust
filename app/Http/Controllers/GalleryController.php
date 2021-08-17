@@ -24,7 +24,7 @@ class GalleryController extends Controller
   	//  Properties
   	//*******************************************************
 	
-	public $gallery_path = '/images/gallery/categories/';
+	public $gallery_path = '/images/gallery/';
 	
 	//*******************************************************
   	//  Methods
@@ -48,8 +48,8 @@ class GalleryController extends Controller
 
 		//  Get additional elements from this method. 
 		$image_count = GalleryImages::all()->count();
-			$gallery_categories = GalleryCategories::paginate(12);
-		$recent_images = GalleryImages::orderBy('id', 'desc')->take(3)->get();
+		$gallery_categories = GalleryCategories::paginate(12);
+		$recent_images = GalleryImages::where('published', true)->orderBy('id', 'desc')->limit(3)->get();
 
 		// Prepare array to pass all the data to the view.
 		$data = array(	'gallery_path' => $gallery_path,
@@ -105,7 +105,7 @@ class GalleryController extends Controller
 		$album = GalleryAlbums::find($album);
 		$image_count = GalleryImages::all()->count();
 		$recent_images = GalleryImages::orderBy('id', 'desc')->take(3)->get();
-      $gallery_images = GalleryImages::where('gallery_albums_id', '=', $album)->paginate(12);
+        $gallery_images = GalleryImages::where('gallery_albums_id', '=', $album)->paginate(12);
 		$album_path = strtolower( $album->galleryCategories->name . '/' . $album->name . '/' . 'thumb-' );			
 			
 		// Prepare array to pass all the data to the view.
@@ -201,11 +201,11 @@ class GalleryController extends Controller
 			$image_name = time() . '-' . $file->getClientOriginalName();
 
 			// Move the file to the right directory, Category -> Album
-			$file->move(public_path() . '/images/gallery/categories/'. $category_name . '/' . $album_name . '/', $image_name);
+			$file->move(public_path() . '/images/gallery/'. $category_name . '/' . $album_name . '/', $image_name);
 
 			// Create thumbnail and move it to the same location as above
-			$create_thumb = Image::make(sprintf(public_path() . '/images/gallery/categories/'. $category_name . '/' . $album_name . '/' . '%s', $image_name))
-			->resize(125, 125)->save(public_path() . '/images/gallery/categories/'. $category_name . '/' . $album_name . '/' . 'thumb-' . $image_name);
+			$create_thumb = Image::make(sprintf(public_path() . '/images/gallery/'. $category_name . '/' . $album_name . '/' . '%s', $image_name))
+			->resize(350, 175)->save(public_path() . '/images/gallery/'. $category_name . '/' . $album_name . '/' . 'thumb-' . $image_name);
 
 			// Set the new unique name to the row   
 			$new_image->image = $image_name;                   
@@ -258,7 +258,7 @@ class GalleryController extends Controller
 		
 		//  Get additional elements from this method.
 		$gallery_albums = GalleryAlbums::all();
-      $gallery_categories = GalleryCats::all();
+        $gallery_categories = GalleryCats::all();
 		$gallery_image = GalleryImages::find($id);
 		$image_path = strtolower( $gallery_image->galleryAlbums->galleryCategories->name . '/' . $gallery_image->galleryAlbums->name . '/' );
 
@@ -343,8 +343,8 @@ class GalleryController extends Controller
 		$image_edit->location = $request->where_taken;
 		$image_edit->taken = $request->when_taken;
 		$image_edit->description = $request->description;
-      $image_edit->gallery_albums_id = $request->gallery_album_id;
-      $image_edit->published = $request->published;	
+      	$image_edit->gallery_albums_id = $request->gallery_album_id;
+      	$image_edit->published = $request->published;	
 		$image_edit->save();
 			
       // Pass the tags to the GalleryTags model for processing independently 
