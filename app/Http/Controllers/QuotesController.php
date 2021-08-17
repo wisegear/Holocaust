@@ -22,9 +22,11 @@ class QuotesController extends Controller
       // did the user use the search box?
       if (isset($_GET['search']))
       {
-         $quotes = Quotes::where(function ($query) {
-            $query->where('author', 'LIKE', '%' . $_GET['search'] . '%')
+         $quotes = Quotes::where('published', true)
+            ->where(function ($query) {
+               $query->where('author', 'LIKE', '%' . $_GET['search'] . '%')
                   ->orWhere('quote', 'LIKE', '%' . $_GET['search'] . '%');
+                  
         })
         ->paginate(12);
       
@@ -33,7 +35,8 @@ class QuotesController extends Controller
       elseif (isset($_GET['author']))
       {
          $quotes = Quotes::where(function ($query) {
-            $query->where('author', 'LIKE', '%' . $_GET['author'] . '%');
+            $query->where('author', 'LIKE', '%' . $_GET['author'] . '%')
+                  ->where('published', true);
          })
          
          ->paginate(12);
@@ -45,9 +48,10 @@ class QuotesController extends Controller
       }
 
         $unique = Quotes::distinct('author')->limit(10)->pluck('author');
+        $unpublished = Quotes::where('published', false)->get();
            
         //  Return quotes index page
-        return view ('quotes.index', compact('quotes', 'unique'));
+        return view ('quotes.index', compact('quotes', 'unique', 'unpublished'));
     }
 
 	//*******************************************************

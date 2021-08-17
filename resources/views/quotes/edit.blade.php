@@ -8,8 +8,9 @@
 			</div>
 			
 			<div class="mx-auto w-1/2"> 
-				<form action="/quotes" method="POST">
+				<form action="/quotes/{{$quote->id}}" method="POST">
 				{{ csrf_field() }}
+				{{ method_field('PUT') }}
 				<div class="flex flex-col space-y-5">			
 					<div class="">
 						<label for="author" class="block">Quote Author</label>
@@ -23,7 +24,11 @@
 					
 					<div class="">
 						<label for="Published" class="">Publish it?</label>
-						<input type="checkbox" id="published" name="published">								
+						<input type="checkbox" id="published" name="published"
+						@if ($quote->published == 1)
+							checked="checked"
+						@endif
+						>								
 					</div>
 					
 					<div class="">
