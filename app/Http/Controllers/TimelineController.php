@@ -39,17 +39,17 @@ class TimelineController extends Controller
          // If the year is < 1933
          if ( $year === 'earlier' ) {
 
-            $events = Timeline::whereYear('event_date', '<', 1933)->orderBy('event_date', 'asc')->get();
+            $events = Timeline::where('published', true)->whereYear('event_date', '<', 1933)->orderBy('event_date', 'asc')->paginate(50);
          
          // If the year is > 1945
          } elseif ( $year === 'later' ) {
 
-            $events = Timeline::whereYear('event_date', '>', 1945)->orderBy('event_date', 'asc')->get();
+            $events = Timeline::where('published', true)->whereYear('event_date', '>', 1945)->orderBy('event_date', 'asc')->paginate(50);
          
          // If the year is between 1933-1945
          } else {
 
-            $events = Timeline::whereYear('event_date', $year)->orderBy('event_date', 'asc')->get();
+            $events = Timeline::where('published', true)->whereYear('event_date', $year)->orderBy('event_date', 'asc')->paginate(50);
 
          }
       
@@ -61,10 +61,10 @@ class TimelineController extends Controller
                $query->where('title', 'LIKE', '%' . $_GET['search'] . '%')
                   ->orWhere('description', 'LIKE', '%' . $_GET['search'] . '%');
                   
-         })->paginate(12);
+         })->paginate(50);
 
       } else {    
-         $events = Timeline::orderBy('event_date', 'asc')->get();
+         $events = Timeline::where('published', true)->orderBy('event_date', 'asc')->paginate(50);
       }
 
       //  Pick out the years

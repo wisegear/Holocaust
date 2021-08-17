@@ -44,7 +44,19 @@
                            <span class="font-bold">{{ date('Y', strtotime($event->event_date)) }}</span>
                         </div>
                         <div class="p-4 space-y-4">
-                           <h2 class="font-bold">{{ $event->title }}</h2>
+                           <div class="flex justify-between">
+                              <h2 class="font-bold">{{ $event->title }}</h2>   
+                              <div class="flex gap-1">
+                                 @can ('Admin')
+                                    <form action="/timeline/{{ $event->id }}" method="POST" onsubmit="return confirm('Do you really want to delete this Event?');">
+                                    {{ csrf_field() }}
+                                    {{ method_field ('DELETE') }} 
+                                    <input class="border rounded-md text-xs p-1 bg-red-50 hover:bg-red-500" role="button" type="submit" value="D">
+                                    </form>
+                                    <a class="border rounded-md p-1 text-xs font-semibold bg-yellow-50 hover:bg-yellow-500" href="/timeline/{{ $event->id }}/edit" role="button">E</a>
+                                 @endcan
+                              </div>
+                           </div>
                            <p class="text-sm">{{ $event->description }}</p>
                         </div>
                      </div>
@@ -53,7 +65,19 @@
                   <div class="flex space-x-10 justify-end">
                      <div class="w-3/4 flex items-center space-x-5 border rounded-md">
                      <div class="p-4 space-y-4">
-                           <h2 class="font-bold">{{ $event->title }}</h2>
+                           <div class="flex justify-between">
+                              <h2 class="font-bold">{{ $event->title }}</h2>   
+                              <div class="flex gap-1">
+                                 @can ('Admin')
+                                    <form action="/timeline/{{ $event->id }}" method="POST" onsubmit="return confirm('Do you really want to delete this Event?');">
+                                    {{ csrf_field() }}
+                                    {{ method_field ('DELETE') }} 
+                                    <input class="border rounded-md text-xs p-1 bg-red-50 hover:bg-red-500" role="button" type="submit" value="D">
+                                    </form>
+                                    <a class="border rounded-md p-1 text-xs font-semibold bg-yellow-50 hover:bg-yellow-500" href="/timeline/{{ $event->id }}/edit" role="button">E</a>
+                                 @endcan
+                              </div>
+                           </div>
                            <p class="text-sm">{{ $event->description }}</p>
                         </div>
                         <div class="border-l p-4 text-center text-red-500">
@@ -65,6 +89,10 @@
                @endif
             @endforeach
          @endforeach 
+      </div>
+
+      <div class="w-1/2 mx-auto mt-10">
+         {{ $events->links() }}
       </div>
 
 </x-layout>

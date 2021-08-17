@@ -12,7 +12,7 @@ class Timeline extends Model
     protected $table = 'timeline';
 
     protected $casts = [
-        'event_date' => 'datetime:Y-m-d',
+        'event_date' => 'datetime:d-m-Y',
     ];
     
 }

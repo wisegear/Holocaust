@@ -23,7 +23,7 @@
 					
 					<div class="">
 						<label for="event_date" class="block">Event Date</label>
-						<input type="date" id="event_date" name="event_date" class="" value="{{$timeline_event->event_date}}">
+						<input type="date" id="event_date" name="event_date" class="" value="{{$timeline_event->event_date->format('Y-m-d')}}">
 					</div>	
 					
 					<div class="">
