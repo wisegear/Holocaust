@@ -17,6 +17,12 @@
         <a href="/quotes/create" role="button" class="border rounded-md p-1 bg-green-300 text-xs">Create Quote</a>
       </div>
     @endcan
+    <form method="get" action="/blog" class="mb-5">
+    <h2 class="text-lg font-bold mb-2">Search Quotes</h2>
+      <div class="w-1/2 mx-auto w-full">
+        <input type="text" class="border border-gray-300 rounded-md w-full text-sm" id="search" name="search" placeholder="Enter search term and press return">
+      </div>
+  </form>
     <div class="flex flex-col mb-5">
       <h2 class="text-lg font-bold">Popular Authors</h2>
       @foreach ($unique as $item)
