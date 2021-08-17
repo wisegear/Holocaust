@@ -30,11 +30,20 @@ class TimelineController extends Controller
    
    public function index()
    {
-      //  Get data for the view
-      $events = Timeline::where('published', true)->get();
-      
+      if (isset($_GET['year']))
+      {
+         $events = Timeline::whereYear('event_date', $_GET['year'])->get();
+
+      } else {
+
+         $events = Timeline::where('published', true)->get();
+      }
+
+      //  Pick out the years
+      $uniqueYears = Timeline::all()->map(function($entry) { return $entry->event_date->year; })->unique()->sort();
+
       // Return the view with data
-      return view('timeline.index', compact('events'));
+      return view('timeline.index', compact('events', 'uniqueYears'));
    }
 
 	//*******************************************************

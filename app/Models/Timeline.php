@@ -10,5 +10,10 @@ class Timeline extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = 'timeline';
+
+    protected $casts = [
+        'event_date' => 'datetime:Y-m-d',
+    ];
+    
 }
 

@@ -22,22 +22,12 @@
 		</form>
 
       <div class="mb-10 w-4/5 mx-auto">
-         <ul class="flex justify-evenly gap-5">
-            <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">Earlier</a></li>
-            <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">1933</a></li>
-            <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">1934</a></li>
-            <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">1935</a></li>
-            <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">1936</a></li>
-            <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">1937</a></li>
-            <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">1938</a></li>
-            <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">1939</a></li>
-            <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">1940</a></li>
-            <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">1941</a></li>
-            <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">1942</a></li>
-            <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">1943</a></li>
-            <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">1944</a></li>
-            <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">1945</a></li> 
-            <li class="border rounded-md p-1 text-sm hover:bg-red-200"><a href="#">Later</a></li> 
+         <ul class="flex justify-center gap-5">
+         <li class="border rounded-md p-1 text-xs bg-red-100 hover:bg-red-200 font-bold" role="button"><a href="/timeline?year=earlier">Earlier</a></li>
+         @foreach ($uniqueYears as $year)
+            <li class="border rounded-md p-1 text-xs bg-red-50 hover:bg-red-100" role="button"><a href="/timeline?year={{$year}}">{{$year}}</a></li>
+         @endforeach 
+         <li class="border rounded-md p-1 text-xs bg-red-100 hover:bg-red-200 font-bold" role="button"><a href="/timeline?year=later">Later</a></li>
          </ul>
       </div>
                 
