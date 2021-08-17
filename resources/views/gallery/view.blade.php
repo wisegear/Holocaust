@@ -1,29 +1,26 @@
 <x-layout>
 
-  <div class="row-fluid">
-		
+<div class="">	
     <div class="container">
       
-			<div id="gallery-header">
+	<div id="gallery-header">
 				
-        <h3>{{$gallery_image->title}}</h3>
+        <h3 class="text-center text-lg font-bold">{{$gallery_image->title}}</h3>
 				
 				@if (Auth::user() && Auth::user()->has_user_role('Admin'))
-						<form action="/gallery/{{ $gallery_image->id }}" method="POST">
+						<form action="/gallery/{{ $gallery_image->id }}" method="POST" class="flex justify-center gap-4 my-5">
 						{{ csrf_field() }}
 						{{ method_field('DELETE') }}
-						<button role="submit">Delete</button>
-						<a class="btn btn-outlined btn-warning btn-xs" href="/gallery/{!! $gallery_image->id !!}/edit" role="button">Edit</a>
+						<button role="submit" class="text-xs border rounded-md p-1 bg-red-300">Delete</button>
+						<a class="text-xs border rounded-md p-1 bg-yellow-300" href="/gallery/{!! $gallery_image->id !!}/edit" role="button">Edit</a>
 						</form>
-				@endif		
-				
-        <div><hr></div>
+				@endif	
 				
       </div> <!-- Close image block -->
       
       <div class="col-md-12">
 				
-				<div><img src="{{ URL::asset($gallery_path . $image_path . $gallery_image->image) }}" class="img-responsive img-thumbnail center-block"></div>
+				<div><img src="{{ URL::asset($gallery_path . $image_path . $gallery_image->image) }}" class="rounded-md"></div>
 				
 				<div><hr></div>
 				
@@ -47,7 +44,6 @@
 			
 				<div class=col-md-12>
 					
-					<div><hr></div>
 					
 				<!-- was comment section -->
 				

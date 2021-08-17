@@ -70,7 +70,7 @@ class GalleryController extends Controller
    public function albums($category)
    {
       //  Bring in the elements we need from elsewhere
-      $gallery_path = $this->gallery_path;
+        $gallery_path = $this->gallery_path;
 		$popular_tags = GalleryTagsPivot::getPopularTags();
 		
 		//  Get additional elements from this method.
@@ -99,22 +99,17 @@ class GalleryController extends Controller
    {
       //  Bring in the elements we need from elsewhere
       $gallery_path = $this->gallery_path;
-		$popular_tags = GalleryTagsPivot::getPopularTags();
 		
 		//  Get additional elements from this method.
-		$album = GalleryAlbums::find($album);
-		$image_count = GalleryImages::all()->count();
-		$recent_images = GalleryImages::orderBy('id', 'desc')->take(3)->get();
-        $gallery_images = GalleryImages::where('gallery_albums_id', '=', $album)->paginate(12);
-		$album_path = strtolower( $album->galleryCategories->name . '/' . $album->name . '/' . 'thumb-' );			
+		$album = GalleryAlbums::findorFail($album);
+        $gallery_images = GalleryImages::where('gallery_albums_id', '=', $album->id)->paginate(12);
+		$album_path = strtolower( $gallery_path . '/' . $album->galleryCategories->name . '/' . $album->name . '/' . 'thumb-' );			
 			
 		// Prepare array to pass all the data to the view.
-      $data = array(	'gallery_images' => $gallery_images,
+      $data = array(		'gallery_images' => $gallery_images,
 							'gallery_path' => $gallery_path,
 							'album_path' => $album_path,
-							'image_count' => $image_count,
-							'popular_tags' => $popular_tags,
-							'recent_images' => $recent_images,
+							'album' => $album,
                       );
    
       // Return the view to the viewer.
