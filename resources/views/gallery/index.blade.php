@@ -22,7 +22,7 @@
              <a class="border rounded-md p-1 bg-green-400" href="/gallery/create" role="button">Upload Image</a>
             </div>
           @endif
-           
+           <!-- -->
           <div class="p-2 border rounded-md bg-gray-50">					 
               <p class="text-center font-bold">Total Gallery Images</p>
               <p class="text-center text-red-500"><b>{!! $image_count !!}</b></p>
