@@ -80,7 +80,7 @@
 					
 					<div class="form-group">
 						<label class="">Published?</label>
-						<input type="checkbox" id="published" name="published">							
+						<input type="checkbox" id="published" name="published">						
 					</div>
 					
 					<div class="form-group">

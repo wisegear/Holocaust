@@ -50,7 +50,7 @@ class CreateGalleryTables extends Migration
           $table->string('location');
           $table->string('taken');
           $table->string('description');
-          $table->boolean('published');
+          $table->boolean('published')->default(true);
                      
           // Create a relation between this table and the user table.
           
