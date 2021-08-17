@@ -7,9 +7,9 @@
     <!-- Most recent uploaded images -->
     <div class="w-9/12">
       <h2 class="text-lg font-bold mb-2">Recently added images</h2>
-      <div class="flex max-w-9/12 justify-between gap-10">
+      <div class="grid grid-cols-3 gap-10">
         @foreach ($recent_images as $image)
-          <img src="{{ $gallery_path }}/{{ $image->GalleryAlbums->GalleryCategories->name }}/{{ $image->GalleryAlbums->name }}/thumb-{{$image->image}}" alt="" class="min-w-0 rounded-md shadow-md">
+          <img src="{{ $gallery_path }}/{{ $image->GalleryAlbums->GalleryCategories->name }}/{{ $image->GalleryAlbums->name }}/thumb-{{$image->image}}" alt="" class=" rounded-md shadow-md">
         @endforeach
       </div>
     </div>       
