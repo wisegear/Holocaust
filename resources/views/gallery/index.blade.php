@@ -1,9 +1,5 @@
 <x-layout>
-    
-  <div class="text-center">
-    <h3 class="text-xl font-bold">Gallery Index</h3>
-  </div>
-   
+      
 <div class="flex my-10">
   <div class="grid grid-cols-3 gap-10 w-9/12">
     @foreach ($gallery_categories as $gallery_category)
@@ -14,11 +10,11 @@
       @endforeach        
   </div>       
 
-  <div class="w-3/12">
-           <h2 class="text-xl font-semibold">Gallery Information</h2>
-           
+  <!-- Gallery Sidebar -->
+
+  <div class="w-3/12">         
            @if (Auth::user() && Auth::user()->has_user_role('Admin'))
-           <div class="my-5 text-center">
+           <div class="my-5 text-center text-sm">
              <a class="border rounded-md p-1 bg-green-400" href="/gallery/create" role="button">Upload Image</a>
             </div>
            @endif

@@ -4,31 +4,45 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Quotes;
+use DB;
 
 class QuotesController extends Controller
 {
-	//*******************************************************
-  	//  Properties
-  	//*******************************************************
-	
 
-	
-	//*******************************************************
-  	//  Methods
-  	//*******************************************************
    public function __construct()
    {
 		// Handle user authentication for each of the methods.
       $this->middleware('auth', ['except' => ['index', 'show']]);      
    }
    
-	//*******************************************************
-  	//  View the timeline index
-  	//*******************************************************   
+   // Index page for the quotes section
+
     public function index()
     {
-        // Get data elements
-        $quotes = Quotes::where('published', true)->paginate(12);
+      // did the user use the search box?
+      if (isset($_GET['search']))
+      {
+         $quotes = Quotes::where(function ($query) {
+            $query->where('author', 'LIKE', '%' . $_GET['search'] . '%')
+                  ->orWhere('quote', 'LIKE', '%' . $_GET['search'] . '%');
+        })
+        ->paginate(12);
+      
+      } 
+      // did the user click on an author?
+      elseif (isset($_GET['author']))
+      {
+         $quotes = Quotes::where(function ($query) {
+            $query->where('author', 'LIKE', '%' . $_GET['author'] . '%');
+         })
+         
+         ->paginate(12);
+      } 
+      
+      else {
+         // Return all quotes
+         $quotes = Quotes::where('published', true)->paginate(12);
+      }
 
         $unique = Quotes::distinct('author')->limit(10)->pluck('author');
            
