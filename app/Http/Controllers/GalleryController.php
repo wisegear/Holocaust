@@ -225,11 +225,12 @@ class GalleryController extends Controller
 		$gallery_path = $this->gallery_path;
 		$split_tags = GalleryTags::tagsForEdit($id);
 		
+		
 		//  Get additional elements from this method.
 		$gallery_albums = GalleryAlbums::all();
-        $gallery_categories = GalleryCats::all();
+        $gallery_categories = GalleryCategories::all();
 		$gallery_image = GalleryImages::find($id);
-		$image_path = strtolower( $gallery_image->galleryAlbums->galleryCategories->name . '/' . $gallery_image->galleryAlbums->name . '/' );
+		$image_path = strtolower( $gallery_path . $gallery_image->galleryAlbums->galleryCategories->name . '/' . $gallery_image->galleryAlbums->name . '/' );
 
       // Prepare array to pass all the data to the view.  
 		$data = array('gallery_image' => $gallery_image, 
@@ -282,7 +283,7 @@ class GalleryController extends Controller
   
          // Create thumbnail
 	      $create_thumb = Image::make(sprintf(public_path() . $gallery_path . $image_path . '%s', $image_name))
-         	->resize(125, 125)->save(public_path() . $gallery_path . $image_path . 'thumb-' . $image_name);
+         	->resize(350, 175)->save(public_path() . $gallery_path . $image_path . 'thumb-' . $image_name);
      
          // Set new image name to the database   
          $image_edit->image = $image_name;        
@@ -294,17 +295,21 @@ class GalleryController extends Controller
 		
 		// If the album has changed we need to move the image to the new location, if the album is in a different caegory this will be picked up.
 		
-		if ($request->gallery_album_id != $image_edit->gallery_albums_id)
+		if (isset($request->gallery_album_id))
 		{
-			$new_album = GalleryAlbums::find($request->gallery_album_id);
-					
-			$gallery_path = $this->gallery_path;
-			$old_path = strtolower( $image_edit->galleryAlbums->galleryCategories->name . '/' . $image_edit->galleryAlbums->name . '/' );
-			$new_path = strtolower( $new_album->galleryCategories->name . '/' . $new_album->name . '/' );
-					
-			File::move(public_path() . $gallery_path . $old_path . $image_edit->image, public_path() . $gallery_path . $new_path . $image_edit->image);
-			File::move(public_path() . $gallery_path . $old_path . 'thumb-' . $image_edit->image, public_path() . $gallery_path . $new_path . 'thumb-' . $image_edit->image);
-				
+			if ($request->gallery_album_id != $image_edit->gallery_albums_id)
+			{
+				$new_album = GalleryAlbums::find($request->gallery_album_id);
+						
+				$gallery_path = $this->gallery_path;
+				$old_path = strtolower( $image_edit->galleryAlbums->galleryCategories->name . '/' . $image_edit->galleryAlbums->name . '/' );
+				$new_path = strtolower( $new_album->galleryCategories->name . '/' . $new_album->name . '/' );
+						
+				File::move(public_path() . $gallery_path . $old_path . $image_edit->image, public_path() . $gallery_path . $new_path . $image_edit->image);
+				File::move(public_path() . $gallery_path . $old_path . 'thumb-' . $image_edit->image, public_path() . $gallery_path . $new_path . 'thumb-' . $image_edit->image);
+			
+				$image_edit->gallery_albums_id = $request->gallery_album_id;
+			}
 		}
 			
 		// Now we can assign all other fields and save them in the database.
@@ -312,8 +317,15 @@ class GalleryController extends Controller
 		$image_edit->location = $request->where_taken;
 		$image_edit->taken = $request->when_taken;
 		$image_edit->description = $request->description;
-      	$image_edit->gallery_albums_id = $request->gallery_album_id;
-      	$image_edit->published = $request->published;	
+      	
+		// Check if the post is to be published
+
+		if ($request->published === 'on') {
+	
+			$image_edit->published = 1; } else {
+				$image_edit->published = 0;
+		}
+
 		$image_edit->save();
 			
       // Pass the tags to the GalleryTags model for processing independently 
@@ -327,44 +339,30 @@ class GalleryController extends Controller
   	//  Destroy an image
   	//*******************************************************
 	
-   public function destroy(Request $request)
+   public function destroy($id)
    {
-   	//  As with the store method we are dealing with both destoying an image or a comment attached to it.
-		//  There is a hidden form field called delcomment or delimage to tell us which to delete.
-		//  The hidden field has the $id assigned to it.
-		
-		// If the request is to delete a comment then..
-      if ($request->has('delcomment'))
-      {
-      	GalleryComments::destroy($request->delcomment);
-     	 	return redirect()->back();
-      }
-      
-		// If the request is to delete an image then..	
-		if ($request->has('delimage'))       
-		{
-			//  Note:  Delete the image from the filesystem before the database, otherwise you will loose the image name.
-			$gallery_image = GalleryImages::findOrFail($request->delimage);
-			$deleting_image = $gallery_image->image;
+		$this->authorize('Admin');
+		//  Note:  Delete the image from the filesystem before the database, otherwise you will loose the image name.
+		$gallery_image = GalleryImages::find($id);
+		$deleting_image = $gallery_image->image;
 
-			$gallery_path = $this->gallery_path;
+		$gallery_path = $this->gallery_path;
 
-			$image_path = strtolower( $gallery_image->galleryAlbums->galleryCategories->name . '/' . $gallery_image->galleryAlbums->name . '/' );					
+		$image_path = strtolower( $gallery_image->galleryAlbums->galleryCategories->name . '/' . $gallery_image->galleryAlbums->name . '/' );					
 
-			File::delete(public_path() . $gallery_path . $image_path . $deleting_image);
-			File::delete(public_path() . $gallery_path . $image_path . 'thumb-' . $deleting_image);
+		File::delete(public_path() . $gallery_path . $image_path . $deleting_image);
+		File::delete(public_path() . $gallery_path . $image_path . 'thumb-' . $deleting_image);
 
-			// Detach(delete) any tags associated with this image.
-			$detach_tags = GalleryImages::findOrFail($request->delimage);
-			$post->galleryTags()->detach();
+		// Detach(delete) any tags associated with this image.
+		$gallery_image->galleryTags()->detach();
 
-			// Delete the database entry for the image
-			GalleryImages::destroy($request->delimage);
+		// Delete the database entry for the image
+		GalleryImages::destroy($id);
 
-			// Return the viewer to the gallery index
-			return redirect()->action([GalleryController::class, 'index']);
+		// Return the viewer to the gallery index
+		return redirect()->action([GalleryController::class, 'index']);
             
-      }	
+
    }
 	
 	//*******************************************************

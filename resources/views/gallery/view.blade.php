@@ -8,7 +8,7 @@
         <h3 class="text-center text-lg font-bold">{{$gallery_image->title}}</h3>
 				
 				@if (Auth::user() && Auth::user()->has_user_role('Admin'))
-						<form action="/gallery/{{ $gallery_image->id }}" method="POST" class="flex justify-center gap-4 my-5">
+						<form action="/gallery/{{ $gallery_image->id }}" method="POST" class="flex justify-center gap-4 my-5"onsubmit="return confirm('Do you really want to delete this Image?');">
 						{{ csrf_field() }}
 						{{ method_field('DELETE') }}
 						<button role="submit" class="text-xs border rounded-md p-1 bg-red-300">Delete</button>
