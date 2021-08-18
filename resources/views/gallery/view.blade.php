@@ -45,7 +45,56 @@
 				<div class=col-md-12>
 					
 					
-				<!-- was comment section -->
+				<!-- Display existing comments on the post -->
+
+				<div class="border-b pb-2">
+					<p class="font-semibold">Comments</p> 
+				</div>
+
+				
+				<div class="my-5">
+					@foreach( $gallery_image->comments->sortByDesc('created_at') as $comment)
+					<div class="flex space-x-5 text-sm">
+						<a href="/profile/{{ $comment->users->name }}" class="text-red-500">{{ $comment->users->name }}</a>
+							<a>{{ $comment->created_at->diffForHumans() }}</a>
+							@can ('Admin')
+								<a class="border rounded-md bg-red-300 px-2">
+						    		<form action="/comments/{{ $comment->id }}" method="POST" onsubmit="return confirm('Do you really want to delete this Comment?');">
+						    		{{ csrf_field() }}
+						    		{{ method_field ('DELETE') }} 
+						    		<button type="submit" class="">Del</button>
+						    		</form>
+								@endcan
+								</a>
+					</div>
+					<div class="mt-3 mb-5 text-sm">
+							<p class="">{{ $comment->body }}</p>
+					</div>
+					@endforeach
+				</div>
+
+
+			@if (Auth::check() && Auth::user()->can('Member'))
+			<div class="md:w-1/2 mx-auto my-10">
+				<p class="font-semibold text-center">Comment on this post</p>
+			  	<form method="POST" action="/gallery-comments/{{ $gallery_image->id }}" enctype="multipart/form-data">
+			  	{{ csrf_field() }}      
+			  	{{ method_field('PUT') }}    
+		            <div class="form-group">
+		            	<div class="mt-2" style="color: red;">{{ $errors->has('comment') ? 'At least some text is required' : '' }}</div>
+	                   <textarea class="w-full" name="comment" id="comment" placeholder="Reply here...">{{ old('text') }}</textarea>
+	            	</div>
+	   
+		            <div class="text-center"><button type="submit" class="border rounded-md p-2 text-sm bg-green-400">Add Comment</button></div>
+        		</form>
+			</div>
+			@else
+				<div>
+					<p class="font-semibold text-red-500 text-center mt-10">You must log in if you want to comment on this article</p>
+				</div>
+			@endif
+
+				<!-- End display comments section -->
 				
 
 			

@@ -33,6 +33,10 @@ class GalleryImages extends Model
    {
     return $this->belongsToMany('App\Models\GalleryTags', 'gallery_tags_pivot');
    }
+
+   public function comments() {
+    return $this->morphMany(Comments::class, 'commentable');
+}
   
 	//*******************************************************
   	//  Methods

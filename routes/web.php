@@ -8,6 +8,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ImagesController;
 use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\GalleryComments;
 use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Middleware\IsMember;
@@ -52,6 +53,7 @@ Route::middleware([IsMember::class])->group(function() {
     Route::resource('profile', UserProfileController::class);
     Route::resource('support', SupportController::class);
     Route::resource('comments', CommentsController::class)->only(['destroy', 'update']);
+    Route::resource('gallery-comments', GalleryComments::class)->only(['destroy', 'update']);
 
 });
 

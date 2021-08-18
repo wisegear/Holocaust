@@ -12,6 +12,7 @@ use App\Models\GalleryImages;
 use App\Models\GalleryComments;
 use App\Models\GalleryTags;
 use App\Models\GalleryTagsPivot;
+use App\Models\Comments;
 use Auth;
 use Image;
 use File;
@@ -135,27 +136,7 @@ class GalleryController extends Controller
    public function store(Request $request)
    {
 		
-		// I am handing both the store of a new image and a new comment on an existing image here
-		// To handle this I have put a hidden form field with the name comment_image_id in it. If
-		// Request has this id then we know it's a comment and therefore process as such.
-			
-		if($request->has('comment_image_id'))
-		{
-			$new_comment = new GalleryComments;  // Open the gallery comments table  
-
-			// Get the comment form data and assign to new comment
-			$new_comment->images_id = $request->comment_image_id;
-			$new_comment->user_id = Auth::user()->id;
-			$new_comment->comment = $request->comment;
-
-			$new_comment->save();  // Save new comment
-
-			return redirect()->back();  // Return the user to the page they were immediately prior.
-		}
-			
-		else  // If there is no comment_image_id then we are saving a new image.
-			
-		{
+		
 			// Get the category And album names and convert to lower case to match directory on filesystem.
 			$find_album = GalleryAlbums::find($request->gallery_album_id);
 			$album_name = strtolower ($find_album->name);
@@ -207,7 +188,7 @@ class GalleryController extends Controller
 			// Return the user back to the gallery index
 			return redirect()->action([GalleryController::class, 'index']);
 				
-		}
+	
 		
    }
         
@@ -219,8 +200,8 @@ class GalleryController extends Controller
    {
    	//  Bring in the elements we need from elsewhere
 		$gallery_path = $this->gallery_path;
-      $gallery_image = GalleryImages::find($id);
-		
+      	$gallery_image = GalleryImages::with('comments')->find($id);
+		  //$post = BlogPosts::with('comments')->orderBy('created_at', 'desc')->with('BlogCategories', 'Users', 'BlogTags')->where('slug', $slug)->first();
 		//  Get additional elements from this method.
 		$image_path = strtolower( $gallery_image->galleryAlbums->galleryCategories->name . '/' . $gallery_image->galleryAlbums->name . '/' );
 		
