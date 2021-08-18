@@ -172,7 +172,7 @@ class GalleryController extends Controller
 			$new_image->location = $request->where_taken;
 			$new_image->user_id = Auth::user()->id;
 
-			if($new_image->published === 'on')
+			if($request->published === 'on')
 			{
 				$new_image->published = 1;
 
