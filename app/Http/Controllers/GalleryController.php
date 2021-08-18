@@ -116,8 +116,8 @@ class GalleryController extends Controller
    public function create()
    {
     	//  Get additional elements from this method.
-	$gallery_albums = GalleryAlbums::all();
-      $gallery_categories = GalleryCategories::all();
+		$gallery_albums = GalleryAlbums::all();
+      	$gallery_categories = GalleryCategories::all();
       
 		// Prepare array to pass all the data to the view.
       $data = array('gallery_categories' => $gallery_categories,
