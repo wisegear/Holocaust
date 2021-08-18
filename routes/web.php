@@ -51,6 +51,7 @@ Route::middleware([IsMember::class])->group(function() {
 
     Route::resource('profile', UserProfileController::class);
     Route::resource('support', SupportController::class);
+    Route::resource('comments', CommentsController::class)->only(['destroy', 'update']);
 
 });
 

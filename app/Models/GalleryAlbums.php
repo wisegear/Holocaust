@@ -18,6 +18,6 @@ class GalleryAlbums extends Model
     
     public function galleryImages()
     {
-      return $this->hasMany('App\Models\GalleryImages', 'albums_id');
+      return $this->hasMany('App\Models\GalleryImages', 'gallery_albums_id');
     }  
 }

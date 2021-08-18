@@ -2,15 +2,12 @@
 
   <div class="flex gap-10">
       <div class="w-9/12">
-        <div class="col-md-9 no-padding">
+        <div class="grid grid-cols-3 gap-10">
          @foreach ($gallery_albums as $gallery_album)
-          <div class="col-md-3">
-            <div class="panel panel-default">
-              <div class="panel-heading"><a href="/gallery/images/{{$gallery_album->id}}">{{ $gallery_album->name }}</a></div>
-              <div class="panel-body">
-              </div>
+            <div class="">
+              <a href="/gallery/images/{{$gallery_album->id}}">{{ $gallery_album->name }}</a>
+                <img src="{{ $gallery_path }}/{{ $gallery_album->GalleryCategories->name }}/{{ $gallery_album->name }}/thumb-{{$gallery_album->galleryImages->random()->image}}" alt="" class=" rounded-md shadow-md">
             </div>
-           </div>
           @endforeach        
         </div>
       </div> 
