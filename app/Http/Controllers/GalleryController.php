@@ -157,10 +157,10 @@ class GalleryController extends Controller
 			
 		{
 			// Get the category And album names and convert to lower case to match directory on filesystem.
-			$find_category = GalleryCategories::findorFail($request->gallery_category_id);
-			$category_name = strtolower ($find_category->name);
 			$find_album = GalleryAlbums::find($request->gallery_album_id);
 			$album_name = strtolower ($find_album->name);
+			$find_category = GalleryCategories::find($find_album->gallery_categories_id);	
+			$category_name = strtolower ($find_category->name);
 
 			// save the new image and all applicable fields from the form.
 			$new_image = new GalleryImages;

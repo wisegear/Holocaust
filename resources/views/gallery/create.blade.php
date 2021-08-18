@@ -12,6 +12,7 @@
 
 			<!-- Select category for the image -->
 			<form action="">
+			{{ csrf_field() }}
 				<div class="text-center mb-10">
 					<p class="font-bold">Which category do you wish to assign this image to?</p>
 					<p class="w-1/2 mx-auto text-sm text-gray-500 mb-2">In order to place the image in the right album you must select the top-level category and click on the get albums 
