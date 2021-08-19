@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\GalleryCategories;
 use App\Models\GalleryAlbums;
 use Validator;
+use File;
 
 class GalleryCategoriesController extends Controller
 {
+
+    public $gallery_path = '/images/gallery';
+
     /**
      * Display a listing of the resource.
      *
@@ -49,6 +53,8 @@ class GalleryCategoriesController extends Controller
 
         $category->name = $request->new_category_name;
 
+        File::MakeDirectory(public_path() . $this->gallery_path . '/' . strtolower($request->new_category_name));
+
         $category->save();
 
         return back();
@@ -80,9 +86,13 @@ class GalleryCategoriesController extends Controller
 
         $category = GalleryCategories::find($id);
 
+        File::Move(public_path() . $this->gallery_path . '/' . strtolower($category->name), public_path() . $this->gallery_path . '/' . strtolower($request->category_name));
+
         $category->name = $request->category_name;
 
+
         $category->save();
+
 
         return back();
     }
@@ -96,9 +106,11 @@ class GalleryCategoriesController extends Controller
     public function destroy($id)
     {
 
-        $post = GalleryCategories::find($id);
+        $directory = GalleryCategories::find($id);
 
         GalleryCategories::destroy($id);
+
+        File::DeleteDirectory(public_path() . $this->gallery_path . '/' . strtolower($directory->name));
 
         return back();
     }
