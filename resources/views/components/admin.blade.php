@@ -4,6 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="description" content="Holocaust History - This site is dedicated to learning more about the Holocaust and providing a wide range of holocaust related resources.">
+        <meta name="keywords" content="Holocaust, Nazis, Germany, Poland, Death Camps, Auschwitz, Treblinka, Sobibor, gallery, Timeline">
+        <meta name="author" content="Lee Wisener">
 
         <title>{{ config('app.name', 'HolocaustHistory') }}</title>
 

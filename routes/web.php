@@ -1,5 +1,7 @@
 <?php
 
+// Routes used throughout the site.
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UserProfileController;
@@ -13,6 +15,8 @@ use App\Http\Controllers\TimelineController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Middleware\IsMember;
 use App\Http\Middleware\IsAdmin;
+
+// Route relating to the admin section.
 
 use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\AdminSupportController;
@@ -36,6 +40,8 @@ use App\Http\Controllers\Admin\AdminTimelineController;
 |
 */
 
+// Individual routes used.
+
 Route::get('/', [PagesController::class, 'home']);
 Route::get('/about', [PagesController::class, 'about']);
 Route::get('/contact', [PagesController::class, 'contact']);
@@ -43,7 +49,6 @@ Route::get('/important', [PagesController::class, 'important']);
 Route::resource('/quotes', QuotesController::class);
 Route::resource('/blog', BlogController::class);
 Route::resource('/timeline', TimelineController::class);
-
 Route::resource('/gallery', GalleryController::class);
 Route::get('/gallery/albums/{albums}', [GalleryController::class, 'albums']);
 Route::get('/gallery/images/{album}', [GalleryController::class, 'images']);
@@ -60,7 +65,7 @@ Route::middleware([IsMember::class])->group(function() {
 
 });
 
-// Protected Admin routes only accessible by admin
+// Protected Admin routes only accessible by admin.
 
 Route::middleware([IsAdmin::class])->group(function() {
     

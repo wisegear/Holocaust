@@ -1,5 +1,6 @@
 <x-layout>
 
+<!-- Adding TinyMCE for text edits-->
 <script type="text/javascript">
 	tinymce.init({
 		selector: "textarea",
@@ -16,10 +17,11 @@
 <h2 class="text-2xl text-center font-bold mb-10">Edit Existing Post</h2>
 
 <div class="w-3/4 mx-auto">
+	<!-- Form to edit existing blog post-->
 	<form method="POST" action="/blog/{{ $post->id }}" enctype="multipart/form-data">
 	{{ csrf_field() }}
 	{{ method_field('PUT') }}
-
+		<!-- Script to manage collection of uploaded image and display it. -->
 		<script>
 			function postImage() {			
 				var imagePath = "<?php echo asset('images/media') . '/small-' ?>";
@@ -29,10 +31,12 @@
 			}
 		</script> 
 	
+	<!-- Link to the Media section for imae uploads -->
 	<div class="text-center">
 		<a class="border rounded-md text-sm font-semibold py-1 px-2 bg-indigo-100" target="_blank" href="/media" role="button">Find/Upload Media</a>
 	</div>
 
+	<!-- Add image form-->		
 	<div class="flex justify-center space-x-10 my-5">
 		<input type="text" class="w-1/2 border rounded-md text-sm h-8" id="getimage" name="getimage" placeholder="Copy image name here">
 		<div class="">
@@ -40,6 +44,7 @@
 		</div>
 	</div>	  
 
+	<!-- Display the existing image and new image side by side-->
 	<div class="flex justify-around mx-auto mb-10">
 		<div class="">
 			<P class="text-center font-semibold my-4">Existing Image</P>
@@ -47,16 +52,20 @@
 		</div>
 		<div class="">
 			<p class="text-center font-semibold my-4">New Image (if selected)</p>
+			<!-- newimage comes from JS above -->
 			<div class="" id="newimage"></div> 
 		</div>
 	</div>
 
+	<!-- Form elements -->
 	<div class="text-center mt-2 text-red-500">
 		{{ $errors->has('newimage') ? 'An image is required' : '' }}
 	</div>
-
+	
+	<!-- Display old image -->
 	<div class="mx-auto" id="output"></div>            
-				
+		
+		<!-- Post Title -->	
 		<div class="mt-3">
 			<p class="font-semibold text-gray-700 mb-2">Enter title:</p>
 			<div class="mt-2 text-red-500">{{ $errors->has('title') ? 'A title is required' : '' }}</div>
@@ -77,6 +86,7 @@
 			<textarea class="" name="body" id="body">{{ $post->body }}</textarea>	
 		</div>
 			
+		<!-- Manage category selection -->
 		<div class="border my-10">
 			<p class="font-semibold text-gray-700 mb-2">Select a category:</p>
 			<div class="mt-2 text-red-500">{{ $errors->has('category') ? 'A category is required' : '' }}</div>
@@ -96,11 +106,13 @@
 			</div>
 		</div>  
 
+		<!-- Post tags -->
 		<div class="my-10">
 			<p class="font-semibold text-gray-700 mb-2">Enter some tags if required:</p>
 			<input type="text" class="w-full border rounded-md text-sm h-8" id="tags" name="tags" value="{{ $split_tags }}">
 		</div>
 
+		<!-- Post Options -->	
 		<div class="">
 			<p class="font-semibold text-gray-700 mb-2">Post Options:</p>
 			<ul class="flex border rounded-md py-2 text-sm justify-evenly">           
@@ -123,7 +135,9 @@
 
 </div>
 
+<!-- Not even sure why I added this, I think it is needed to actually load the new image on the page-->
 <script>
 	window.onload=postImage;
 </script>
+
 </x-layout>

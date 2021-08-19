@@ -1,6 +1,8 @@
 <x-layout>
 
-    <div class="">
+    <!-- Uses the PagesController -->
+    <!-- Header and random quote passed from Quotes::class -->
+    <div>
         <h1 class="text-center text-lg font-bold pb-2">Holocaust History Site </h1>
         <div class="text-center text-sm my-5 text-gray-600">
             <p>{{ $quote->quote }}</p>
@@ -12,15 +14,13 @@
         </div>
     </div>
 
-    <div class="text-center text-sm my-5 text-gray-600">
-
-    </div>
-
+    <!-- Display most recent blog posts -->
     <div class="border-b my-5 text-sm font-bold text-red-500">
         <p>Recent Blog Posts</p>
     </div>
 
     <div class="flex justify-between gap-10">
+        <!-- get 3 most recent posts BlogPosts::class -->
         @foreach($posts as $post)
         <div class="w-full">
             <img src="/images/media/small-{{ $post->image }}" alt="" class="w-full rounded-md shadow-md">

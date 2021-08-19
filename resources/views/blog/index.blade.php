@@ -1,7 +1,10 @@
 <x-layout>
 
+<!-- blog Index -->
+
 <div class="flex flex-col md:flex-row gap-20">
     <div class=" md:w-9/12">
+		<!-- Get posts and loop through -->
         @foreach ($posts as $post)
             <img src="/images/media/medium-{{ $post->image }}" alt="" class="rounded-md mb-4">
             <h2 class="text-2xl font-bold hover:text-red-500 mb-2"><a href="/blog/{{$post->slug}}">{{ $post->title }}</a></h2>
@@ -31,14 +34,19 @@
                 </ul>
             </div>
         @endforeach
-        <div class="mt-10">
-            {{ $posts->links() }}
-        </div>
+		<!-- End post loop -->
+
+		<!-- Display pagination -->
+		<div class="mt-10">
+			{{ $posts->links() }}
+		</div>
     </div>
+
+	<!-- Display sidebar, using a component-->
     <div class="flex flex-col md:w-3/12">
         <x-blog-sidebar/>
 	</div>
-</div>
 
+</div>
 
 </x-layout>

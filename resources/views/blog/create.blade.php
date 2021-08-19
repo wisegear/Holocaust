@@ -1,5 +1,6 @@
 <x-layout>
 
+<!-- Adding TinyMCE editor, this is the code required to make it work further down-->
 <script type="text/javascript">
 	tinymce.init({
 		selector: "textarea",
@@ -18,7 +19,7 @@
 <div class="w-3/4 mx-auto">
 	<form method="POST" action="/blog" enctype="multipart/form-data">
 	{{ csrf_field() }}
-
+		<!-- Script to get the new image and display it-->
 		<script>
 			function postImage() {
 				
@@ -40,12 +41,14 @@
 		</div>
 	</div>	  
 
+	<!-- Display the new image -->
 	<div class="text-center mt-2 text-red-500">
 		{{ $errors->has('newimage') ? 'An image is required' : '' }}
 	</div>
 
 	<div class="mx-auto" id="output"></div>            
-				
+		
+		<!-- Post Title -->	
 		<div class="mt-3">
 			<p class="font-semibold text-gray-700 mb-2">Enter title:</p>
 			<div class="mt-2 text-red-500">{{ $errors->has('title') ? 'A title is required' : '' }}</div>
@@ -66,6 +69,7 @@
 			<textarea class="" name="body" id="body" placeholder="This is the body of the post">{{ old('body') }}</textarea>	
 		</div>
 			
+		<!-- Manage category selection -->
 		<div class="border my-10">
 			<p class="font-semibold text-gray-700 mb-2">Select a category:</p>
 			<div class="mt-2 text-red-500">{{ $errors->has('category') ? 'A category is required' : '' }}</div>
@@ -81,11 +85,13 @@
 			</div>
 		</div>  
 
+		<!-- Post Tags -->
 		<div class="my-10">
 			<p class="font-semibold text-gray-700 mb-2">Enter some tags if required:</p>
 			<input type="text" class="w-full border rounded-md text-sm h-8" id="tags" name="tags" placeholder="Enter tags for the post, eg. one-two-three">
 		</div>
 
+		<!-- Manage the post options -->
 		<div class="">
 			<p class="font-semibold text-gray-700 mb-2">Post Options:</p>
 			<ul class="flex border rounded-md py-2 text-sm justify-evenly">           
@@ -104,6 +110,7 @@
 
 </div>
 
+<!-- To force the page to display the image chosen for the post -->
 <script>
 	window.onload=postImage;
 </script>
