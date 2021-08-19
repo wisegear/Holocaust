@@ -45,7 +45,7 @@ class GalleryAlbumsController extends Controller
 
         $categoryName = GalleryCategories::find($request->category_id);
 
-        File::MakeDirectory(public_path() . $this->gallery_path . '/' . $categoryName->name . '/' . strToLower($request->album_name));
+        File::MakeDirectory(public_path() . $this->gallery_path . '/' . strToLower($categoryName->name) . '/' . strToLower($request->album_name));
 
         $album->save();
 
