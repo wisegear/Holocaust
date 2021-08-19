@@ -5,7 +5,7 @@
     @foreach ($gallery_images as $gallery_image)
       <div>
           <a href="/gallery/{{$gallery_image->id}}"><img class="min-w-0 rounded-md shadow-" 
-          src="/images/gallery/{{ $gallery_image->GalleryAlbums->GalleryCategories->name }}/{{ $gallery_image->GalleryAlbums->name }}/thumb-{{$gallery_image->image}}"></a>
+          src="/images/gallery/{{ strtolower($gallery_image->GalleryAlbums->GalleryCategories->name) }}/{{ strtolower($gallery_image->GalleryAlbums->name) }}/thumb-{{$gallery_image->image}}"></a>
           <a href="/gallery/{{$gallery_image->id}}" class="block my-2">{{$gallery_image->title}}</a>
         </div>
     @endforeach        
