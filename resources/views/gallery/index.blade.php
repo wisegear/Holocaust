@@ -6,11 +6,22 @@
 
     <!-- Most recent uploaded images -->
     <div class="w-9/12">
-      <h2 class="text-lg font-bold mb-2">Recently added images</h2>
+      <h2 class="text-lg font-bold mb-5 border-b">Recently added images</h2>
       <div class="grid grid-cols-3 gap-10">
         @foreach ($recent_images as $image)
-          <img src="{{ $gallery_path }}/{{ $image->GalleryAlbums->GalleryCategories->name }}/{{ $image->GalleryAlbums->name }}/thumb-{{$image->image}}" alt="" class=" rounded-md shadow-md">
+        <div class="relative">
+          <a href="/gallery/{{$image->id}}" class="">
+            <img src="{{ $gallery_path }}/{{ $image->GalleryAlbums->GalleryCategories->name }}/{{ $image->GalleryAlbums->name }}/thumb-{{$image->image}}" 
+              alt="" class=" rounded-md shadow-md">
+              <div class="absolute right-0 top-5">
+                <span class="py-1 px-4 rounded-tl-md rounded-bl-md border-t border-b border-l bg-indigo-100 text-xs font-bold shadow-md">{{ $image->galleryalbums->name }}</span>
+              </div>
+            </a>
+        </div>
         @endforeach
+      </div>
+      <div class="w-4/5 mx-auto mt-10">
+        {{ $recent_images->links() }}
       </div>
     </div>    
     
@@ -19,8 +30,5 @@
     </div>
 
 </div>
-
-
-
 
 </x-layout>

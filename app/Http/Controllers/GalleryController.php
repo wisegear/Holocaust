@@ -50,7 +50,7 @@ class GalleryController extends Controller
 		//  Get additional elements from this method. 
 		$image_count = GalleryImages::all()->count();
 		$gallery_categories = GalleryCategories::paginate(12);
-		$recent_images = GalleryImages::where('published', true)->orderBy('id', 'desc')->limit(9)->get();
+		$recent_images = GalleryImages::where('published', true)->orderBy('id', 'desc')->paginate(12);
 
 		// Prepare array to pass all the data to the view.
 		$data = array(	'gallery_path' => $gallery_path,

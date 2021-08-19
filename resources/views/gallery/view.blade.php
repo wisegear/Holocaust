@@ -16,28 +16,32 @@
 						</form>
 				@endif	
 				
-      </div> <!-- Close image block -->
+      </div>
       
-      <div class="col-md-12">
+      <div class="w-4/5 mx-auto">
 				
-				<div><img src="{{ URL::asset($gallery_path . $image_path . $gallery_image->image) }}" class="rounded-md"></div>
-				
-				<div><hr></div>
-				
-					<div>
-						
-						<ul>
-							<li>Location: {{$gallery_image->location}}</li>
-							<li>Taken: {{$gallery_image->taken}}</li>
-							<li>Description: {{ $gallery_image->description }}</li>
-							<li>Uploaded By: {{$gallery_image->galleryUser->username}}</li>
+				<div>
+					<img src="{{ $gallery_path . $image_path . $gallery_image->image }}" class="rounded-md mx-auto">
+				</div>
+		
+					<div class="flex flex-col my-10">
+						<div>
+							<h3 class="font-bold border-b mb-2">Description</h3>
+							<p>{{ $gallery_image->description }}</p>
+						</div>
+						<div class="flex justify-center gap-5 my-5">
+							<p>Location: {{$gallery_image->location}}</p>
+							<p>Taken: {{$gallery_image->taken}}</p>
+							<p>Uploaded By: <a href="/profile/{{$gallery_image->galleryUser->name}}" class="text-red-500">{{$gallery_image->galleryUser->name}}</a></p>
+						</div>
+						<div class="flex gap-5 my-5 justify-center">
 							@foreach ($gallery_image->galleryTags as $tag)
-								<li><i class="fa fa-tags"></i><a href="/gallery/search/tags/{{ $tag->name }}"> {{ $tag->name }} </a></li>
+								<a href="/gallery/search/tags/{{ $tag->name }}" class="border rounded-md py-1 px-2 text-xs bg-indigo-100 font-semibold"> {{ $tag->name }} </a>
 							@endforeach
-						</ul>
-						
-						<a href="{{ URL::asset($gallery_path . $image_path . $gallery_image->image) }}" target="_blank">View Original Image</a>
-					
+						</div>
+						<div class="mx-auto">
+							<a href="{{ $gallery_path . $image_path . $gallery_image->image }}" type="button" target="_blank" class="border rounded-md py-1 px-2 text-xs bg-yellow-100 font-semibold">View Original Image</a>
+						</div>
 					</div>
 				
   			</div>  <!-- Close image info block -->
@@ -82,10 +86,10 @@
 			  	{{ method_field('PUT') }}    
 		            <div class="form-group">
 		            	<div class="mt-2" style="color: red;">{{ $errors->has('comment') ? 'At least some text is required' : '' }}</div>
-	                   <textarea class="w-full" name="comment" id="comment" placeholder="Reply here...">{{ old('text') }}</textarea>
+	                   <textarea class="w-full rounded-md" name="comment" id="comment" placeholder="Reply here...">{{ old('text') }}</textarea>
 	            	</div>
 	   
-		            <div class="text-center"><button type="submit" class="border rounded-md p-2 text-sm bg-green-400">Add Comment</button></div>
+		            <div class="text-center"><button type="submit" class="border rounded-md py-1 px-2 text-sm bg-green-400">Add Comment</button></div>
         		</form>
 			</div>
 			@else
