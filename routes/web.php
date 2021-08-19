@@ -17,8 +17,11 @@ use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\AdminSupportController;
 use App\Http\Controllers\Admin\BlogCategoriesController;
+use App\Http\Controllers\Admin\GalleryCategoriesController;
+use App\Http\Controllers\Admin\GalleryAlbumsController;
 use App\Http\Controllers\Admin\AdminQuotesController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminGalleryController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\AdminTimelineController;
 
@@ -67,8 +70,11 @@ Route::middleware([IsAdmin::class])->group(function() {
 	Route::resource('/admin/blog', AdminBlogController::class);
     Route::get('/admin/quotes', [AdminQuotesController::class, 'index']);
     Route::get('/admin/timeline', [AdminTimelineController::class, 'index']);
+    Route::resource('/admin/gallery', AdminGalleryController::class);
 	Route::resource('/admin/support', AdminSupportController::class);
 	route::resource('/admin/blog-categories', BlogCategoriesController::class)->except(['create', 'show', 'edit']);
+    route::resource('/admin/gallery-categories', GalleryCategoriesController::class)->except(['create', 'show', 'edit']);
+    route::resource('/admin/gallery-albums', GalleryAlbumsController::class);
 
 });
 

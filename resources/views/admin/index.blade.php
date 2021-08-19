@@ -5,9 +5,9 @@
 	<p class="text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci tempora laborum explicabo enim iusto, earum tempore voluptatum natus sapiente rem voluptas? Culpa, nulla. Deserunt vel a obcaecati illum qui voluptas!</p>
 </div>
 
-<div class="flex justify-evenly">
+<div class="grid grid-cols-3 gap-20">
 
-	<div class="border rounded-md p-3 w-2/12 bg-gray-50">
+	<div class="border rounded-md p-3 bg-gray-50">
 		<div class="">
 			<h2 class="text-xl font-bold text-center">Users</h2>
 			<h2 class="text-indigo-500 text-center">{{ $users->count() }}</h2>
@@ -19,7 +19,7 @@
 		</div>
 	</div>
 
-	<div class="border rounded-md p-3 w-2/12 bg-gray-50">
+	<div class="border rounded-md p-3 bg-gray-50">
 		<div class="">
 			<h2 class="text-xl font-bold text-center">Blog Posts</h2>
 			<h2 class="text-indigo-500 text-center">{{ $blogposts->count() }}</h2>
@@ -29,7 +29,7 @@
 		</div>
 	</div>
 
-	<div class="border rounded-md p-3 w-2/12 bg-gray-50">
+	<div class="border rounded-md p-3 bg-gray-50">
 		<div class="">
 			<h2 class="text-xl font-bold text-center">Timeline</h2>
 			<h2 class="text-indigo-500 text-center">{{ $timeline_count->count() }}</h2>
@@ -39,7 +39,7 @@
 		</div>
 	</div>
 
-	<div class="border rounded-md p-3 w-2/12 bg-gray-50">
+	<div class="border rounded-md p-3 bg-gray-50">
 		<div class="">
 			<h2 class="text-xl font-bold text-center">Support</h2>
 			<h2 class="text-indigo-500 text-center">{{ $tickets->count() }}</h2>
@@ -51,13 +51,23 @@
 		</div>
 	</div>
 
-	<div class="border rounded-md p-3 w-2/12 bg-gray-50">
+	<div class="border rounded-md p-3 bg-gray-50">
 		<div class="">
 			<h2 class="text-xl font-bold text-center">Quotes</h2>
 			<h2 class="text-indigo-500 text-center">{{ $quote_count->count() }}</h2>
 		</div>
 		<div class="mt-5 text-center text-sm text-gray-500">
 			<p class="">Not Published:  <span class="">{{ $quotes_hidden->count() }}</span></p>
+		</div>
+	</div>
+
+	<div class="border rounded-md p-3 bg-gray-50">
+		<div class="">
+			<h2 class="text-xl font-bold text-center">Images</h2>
+			<h2 class="text-indigo-500 text-center">{{ $galleryImages->count() }}</h2>
+		</div>
+		<div class="mt-5 text-center text-sm text-gray-500">
+			<p class="">Not Published:  <span class="">{{ $imagesUnpublished->count() }}</span></p>
 		</div>
 	</div>
 

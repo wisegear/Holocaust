@@ -6,6 +6,7 @@
         <a href="/admin/blog" class="hover:text-red-500">Blog</a>
         <a href="/admin/quotes" class="hover:text-red-500">Quotes</a>
         <a href="/admin/timeline" class="hover:text-red-500">Timeline</a>
+        <a href="/admin/gallery" class="hover:text-red-500">Gallery</a>
         <a href="/admin/support" class="hover:text-red-500">Support</a>
     </div>
 </div>

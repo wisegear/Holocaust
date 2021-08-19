@@ -11,6 +11,7 @@ use App\Models\BlogPosts;
 use App\Models\UserRolesPivot;
 use App\Models\Quotes;
 use App\Models\Timeline;
+use App\Models\GalleryImages;
 
 class AdminController extends Controller
 {
@@ -46,6 +47,10 @@ class AdminController extends Controller
 		$blogposts = BlogPosts::all();
 		$blogunpublished = BlogPosts::where('published', false)->get();
 
+		//Gallery Info
+		$galleryImages = galleryImages::all();
+		$imagesUnpublished = galleryImages::where('published', false)->get();
+
     	$data = array(
 
     		'users' => $users,
@@ -62,7 +67,8 @@ class AdminController extends Controller
 			'quotes_hidden' => $quotes_hidden,
 			'timeline_count' => $timeline_count,
 			'timeline_hidden' => $timeline_hidden,
-
+			'galleryImages' => $galleryImages,
+			'imagesUnpublished' => $imagesUnpublished,
      	);
 
     	return view ('admin.index')->with($data);
