@@ -6,7 +6,7 @@
          @foreach ($gallery_albums as $gallery_album)
             <div class="">
               <a href="/gallery/images/{{$gallery_album->id}}">{{ $gallery_album->name }}</a>
-                <img src="{{ $gallery_path }}/{{ $gallery_album->GalleryCategories->name }}/{{ $gallery_album->name }}/thumb-{{$gallery_album->galleryImages->random()->image}}" alt="" class=" rounded-md shadow-md">
+                <img src="{{ $gallery_path }}/{{ strtolower($gallery_album->GalleryCategories->name) }}/{{ strtolower($gallery_album->name) }}/thumb-{{$gallery_album->galleryImages->random()->image}}" alt="" class=" rounded-md shadow-md">
             </div>
           @endforeach        
         </div>
