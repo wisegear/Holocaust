@@ -86,8 +86,8 @@ class GalleryAlbumsController extends Controller
         $album = GalleryAlbums::find($id);
         $category = GalleryCategories::find($album->gallery_categories_id);
             // Move the file before changing the DB Record
-            File::Move(public_path() . $this->gallery_path . '/' . strtolower($category->name . '/' . strToLower($album->name)),
-                       public_path() . $this->gallery_path . '/' . strtolower($category->name . '/' . strToLower($request->album_name)));
+            File::Move(public_path() . $this->gallery_path . '/' . strtolower($category->name) . '/' . strToLower($album->name),
+                       public_path() . $this->gallery_path . '/' . strtolower($category->name) . '/' . strToLower($request->album_name));
 
         $album->name = $request->album_name;
         
@@ -109,7 +109,7 @@ class GalleryAlbumsController extends Controller
         $category = GalleryCategories::find($album->gallery_categories_id);
 
         // Delete the directory before removing DB record
-        File::DeleteDirectory(public_path() . $this->gallery_path . '/' . strtolower($category->name . '/' . strtolower($album->name)));
+        File::DeleteDirectory(public_path() . $this->gallery_path . '/' . strtolower($category->name) . '/' . strtolower($album->name));
 
         GalleryAlbums::destroy($id);
 
