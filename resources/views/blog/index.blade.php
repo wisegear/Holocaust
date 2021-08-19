@@ -14,7 +14,7 @@
                 <p>in <a href="/blog/?category={{$post->blogcategories->name }}" class="text-red-500">{{ $post->blogcategories->name }}</a></p>
             </div>
             <span class="mb-6">{!! Str::limit($post->body, 200) !!}</span>
-            <div class="mb-4">
+            <div class="my-4">
                 @foreach ( $post->blogTags as $tag)
                     <a href="/blog?tag={{ $tag->name }}" class="border rounded-md py-1 px-2 text-sm bg-blue-50 hover:bg-blue-100"> {{ $tag->name }}</a>
                 @endforeach
