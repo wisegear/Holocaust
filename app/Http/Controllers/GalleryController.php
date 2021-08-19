@@ -16,6 +16,7 @@ use App\Models\Comments;
 use Auth;
 use Image;
 use File;
+use Str;
 
 
 class GalleryController extends Controller
@@ -148,6 +149,7 @@ class GalleryController extends Controller
 
 			$new_image->gallery_albums_id = $request->gallery_album_id;
 			$new_image->title = $request->title;
+			$new_image->slug = Str::slug($request->title, '-');
 			$new_image->description = $request->description;
 			$new_image->taken = $request->when_taken;
 			$new_image->location = $request->where_taken;
@@ -314,6 +316,7 @@ class GalleryController extends Controller
 			
 		// Now we can assign all other fields and save them in the database.
 		$image_edit->title = $request->title;
+		$image_edit->slug = Str::slug($request->title, '-');
 		$image_edit->location = $request->where_taken;
 		$image_edit->taken = $request->when_taken;
 		$image_edit->description = $request->description;
