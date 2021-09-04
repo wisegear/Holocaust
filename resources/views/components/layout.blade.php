@@ -20,6 +20,15 @@
         <!-- Tiny MCE -->
         <script src="https://cdn.tiny.cloud/1/a1rn9rzvnlulpzdgoe14w7kqi1qpfsx7cx9am2kbgg226dqz/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RPLSW8WCF"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9RPLSW8WCF');
+        </script>
     </head>
 
     <body class="font-sans antialiased">
