@@ -1,5 +1,5 @@
 <x-layout>
-    <!-- About page, manual input -->
+    <!-- About page, manual input two-->
     <div class="w-4/5 mx-auto">
         <img src="/images/site/about.png" alt="" class="rounded-md shadow-xl">
         <div class="prose max-w-screen-xl py-4">
