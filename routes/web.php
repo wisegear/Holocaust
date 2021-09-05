@@ -1,6 +1,6 @@
 <?php
 
-// Routes used throughout the site.
+// Routes used throughout the site..
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
