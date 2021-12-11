@@ -29,7 +29,7 @@ class BlogController extends Controller
     {
         // Create blog index results page depending on search method
 
-        // Search by string using the search box
+        // Search by string using the search box on page.
 
         if (isset($_GET['search']))
         {
