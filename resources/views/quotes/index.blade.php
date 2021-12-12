@@ -6,9 +6,9 @@
   <div class="w-9/12">
     <div class="grid grid-cols-3 gap-5">
       @foreach ($quotes as $quote)
-        <div class="border rounded-md p-4 text-sm bg-gray-50 relative">
+        <div class="border rounded-md p-4 text-sm border-gray-200 relative">
           <p class="">{{ $quote->quote }}</p>
-          <p class="font-bold mt-2">-- {{ $quote->author }}</p>
+          <p class="font-bold mt-2 text-right text-xs text-gray-400">-- {{ $quote->author }}</p>
           <!-- Add control for Admin to edit/delete -->
           @can ('Admin')
           <div class="flex gap-1 absolute right-1 bottom-1">

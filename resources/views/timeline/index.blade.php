@@ -40,11 +40,11 @@
             <!-- Left side of the timeline -->
             @foreach($two_events as $event)
                @if($loop->odd)
-               <div class="event-date-right">
+               <div class="timeline-date-right">
                   <h3 class="text-lg font-bold">{{ date('d M Y', strtotime($event->event_date)) }}</h3>  
                </div>
-               <div class="container left">
-                  <div class="content">
+               <div class="timeline-container timeline-left">
+                  <div class="timeline-content">
                      <h2 class="text-lg font-bold mt-4 pb-2">{{ $event->title }}</h2>
                      <p class="text-sm text-gray-600">{{ $event->description }}</p>
                      <!-- Admin edit & delete options -->
@@ -63,11 +63,11 @@
 
                <!-- Right side of the timeline -->
                @elseif($loop->even)
-               <div class="event-date-left">
+               <div class="timeline-date-left">
                   <h3 class="text-lg font-bold">{{ date('d M Y', strtotime($event->event_date)) }}</h3>  
                </div>
-               <div class="container right">  
-                  <div class="content">
+               <div class="timeline-container timeline-right">  
+                  <div class="timeline-content">
                      <h2 class="text-lg font-bold">{{ $event->title }}</h2>
                      <p class="text-sm text-gray-600">{{ $event->description }}</p>
                      <!-- Admin edit & delete options -->
