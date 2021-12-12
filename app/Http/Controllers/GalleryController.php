@@ -72,14 +72,19 @@ class GalleryController extends Controller
    public function albums($category)
    {
       //  Bring in the elements we need from elsewhere
-        $gallery_path = $this->gallery_path;
+      $gallery_path = $this->gallery_path;
 		
-		//  Get additional elements from this method.
-        $gallery_albums = GalleryAlbums::with('galleryImages', 'galleryCategories')->where('gallery_categories_id', '=', $category)->paginate(12);
+			//  Get additional elements from this method.
+      $gallery_albums = GalleryAlbums::with('galleryImages', 'galleryCategories')->where('gallery_categories_id', '=', $category)->paginate(12);
+
+      //  Get Category name
+      $gallery_category = GalleryCategories::find($category);
 			
-		// Prepare array to pass all the data to the view.
-      $data = array(	'gallery_albums' => $gallery_albums,
+			// Prepare array to pass all the data to the view.
+      $data = array(	
+      				'gallery_albums' => $gallery_albums,
 							'gallery_path' => $gallery_path,
+							'gallery_category' => $gallery_category,
 						 	);
 		 
       // Return the view to the viewer.

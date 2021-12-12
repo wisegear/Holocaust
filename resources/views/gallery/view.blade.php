@@ -94,7 +94,7 @@
 			</div>
 			@else
 				<div>
-					<p class="font-semibold text-red-500 text-center mt-10">You must log in if you want to comment on this article</p>
+					<p class="font-semibold text-red-500 text-center mt-10">You must <a href="/login" class="text-gray-700">log in</a> or <a href="/register" class="text-gray-700">register</a> if you want to comment on this image</p>
 				</div>
 			@endif
 

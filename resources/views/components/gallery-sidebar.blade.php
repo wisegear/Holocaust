@@ -7,7 +7,7 @@
            <!-- -->
           <div class="p-2 border rounded-md bg-gray-50">					 
               <p class="text-center font-bold">Total Gallery Images</p>
-              <p class="text-center text-red-500"><b>{!! $image_count !!}</b></p>
+              <p class="text-center text-red-500"><b>{{ $image_count }}</b></p>
           </div> 
 
           <div class="my-5">

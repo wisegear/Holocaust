@@ -6,7 +6,10 @@
 
     <!-- Most recent uploaded images -->
     <div class="w-9/12">
-      <h2 class="text-lg font-bold mb-5 border-b">Recently added images</h2>
+    <div class="border-b mb-5">
+      <h2 class="text-lg font-bold">Most recent images added to the gallery</h2>
+      <p class="text-sm text-gray-500 pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales neque nec blandit dignissim. Donec metus lorem, imperdiet scelerisque viverra in, lacinia dignissim ex. Maecenas nunc nunc, ornare in nibh sed, ultricies ullamcorper turpis. Sed leo</p>
+    </div>
       <div class="grid grid-cols-3 gap-10">
         @foreach ($recent_images as $image)
         <div class="relative">
@@ -14,7 +17,7 @@
             <img src="{{ $gallery_path }}/{{ strtolower($image->GalleryAlbums->GalleryCategories->name) }}/{{ strtolower($image->GalleryAlbums->name) }}/thumb-{{$image->image}}" 
               alt="" class=" rounded-md shadow-md">
               <div class="absolute right-0 top-5">
-                <span class="py-1 px-4 rounded-tl-md rounded-bl-md border-t border-b border-l bg-indigo-100 text-xs font-bold shadow-md">{{ $image->galleryalbums->name }}</span>
+                <span class="py-1 px-4 rounded-tl-md rounded-bl-md border-t border-b border-l bg-red-100 text-xs font-bold shadow-md">{{ $image->galleryalbums->name }}</span>
               </div>
             </a>
         </div>
