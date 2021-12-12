@@ -2,3 +2,106 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/* Timeline */
+
+.timeline:after {
+
+  content:  '';
+  position: absolute;
+  width: 6px;
+  background-color: lightsalmon;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+
+}
+
+.container {
+
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+
+}
+
+.container:after {
+
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -13px;
+  background-color: whitesmoke;
+  border: 4px solid lightsalmon;
+  top: 30px;
+  border-radius: 50%;
+  z-index: 1;
+
+}
+
+.content {
+
+  padding: 20px 30px;
+  border: 1px solid lightsalmon;
+  position: relative;
+  border-radius: 6px;
+
+}
+
+.left:before {
+
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 30px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid lightsalmon;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent lightsalmon;
+
+}
+
+.left {
+  left: 0;
+}
+
+.right:before {
+
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 30px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid lightsalmon;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent lightsalmon transparent transparent;
+
+}
+
+.right {
+  left: 50%;
+}
+
+.right:after {
+  left: -13px;
+}
+
+.event-date-right {
+
+  padding: 30px 40px;
+  position: absolute;
+  left: 50%;
+}
+
+.event-date-left {
+
+  padding: 30px 40px;
+  position: absolute;
+  right: 50%;
+
+}
