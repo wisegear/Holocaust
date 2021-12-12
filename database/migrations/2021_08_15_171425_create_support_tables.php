@@ -17,7 +17,7 @@ class CreateSupportTables extends Migration
             $table->id('id');
             $table->string('title', 100);
             $table->text('text');
-            $table->string('status', 15)->default('Open');
+            $table->string('status', 100)->default('Open');
             $table->Biginteger('user_id')->unsigned();
             $table->timestamps();
 

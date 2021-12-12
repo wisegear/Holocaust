@@ -18,7 +18,7 @@ class CreateTimelineTable extends Migration
           $table->increments('id');
           $table->string('title');
           $table->date('event_date');
-          $table->string('description'); 
+          $table->string('description', 1000); 
           $table->boolean('published')->default(1);
         });
     }

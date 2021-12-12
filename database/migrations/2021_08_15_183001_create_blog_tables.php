@@ -18,7 +18,7 @@ class CreateBlogTables extends Migration
         Schema::create('blog_categories', function(Blueprint $table)
         {
             $table->id('id');
-            $table->string('name', 50);
+            $table->string('name', 150);
             $table->timestamps();
         });
 
@@ -26,8 +26,8 @@ class CreateBlogTables extends Migration
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->id('id');
             $table->string('image')->default('blog_post_default.jpg');
-            $table->string('title');
-            $table->string('slug');
+            $table->string('title', 150);
+            $table->string('slug', 200);
             $table->text('excerpt');
             $table->boolean('featured')->default(false);
             $table->boolean('published')->default(true);

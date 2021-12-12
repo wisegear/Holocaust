@@ -20,7 +20,7 @@ class CreateGalleryTables extends Migration
           $table->id();
           $table->string('name');
           $table->string('slug')->nullable();
-          $table->string('description')->nullable();
+          $table->string('description', 1000)->nullable();
         });
 
         // Albums can be attached to a category
@@ -29,7 +29,7 @@ class CreateGalleryTables extends Migration
           $table->id();
           $table->string('name');
           $table->string('slug')->nullable();
-          $table->string('description')->nullable();
+          $table->string('description', 1000)->nullable();
           $table->bigInteger('gallery_categories_id')->unsigned();
 
           $table->foreign('gallery_categories_id')
@@ -54,7 +54,7 @@ class CreateGalleryTables extends Migration
           $table->string('image');
           $table->string('location');
           $table->string('taken');
-          $table->string('description');
+          $table->text('description');
           $table->boolean('published')->default(true);
                      
           // Create a relation between this table and the user table.

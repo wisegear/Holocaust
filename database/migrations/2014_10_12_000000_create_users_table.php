@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->boolean('email_visible')->default(false);
             $table->string('avatar')->default('default.png');
-            $table->String('bio', 500)->nullable();
+            $table->String('bio', 1000)->nullable();
             $table->string('website')->nullable();
             $table->string('location')->nullable();
             $table->string('linkedin')->nullable();
