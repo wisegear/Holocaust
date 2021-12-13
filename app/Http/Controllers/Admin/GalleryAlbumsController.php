@@ -18,7 +18,13 @@ class GalleryAlbumsController extends Controller
      */
     public function index()
     {
-        //
+
+        $get_category = $_GET['category'];
+
+        $albums = GalleryAlbums::where('gallery_categories_id', $get_category)->get();
+        $category = GalleryCategories::find($get_category);
+
+        return view('admin.gallery.albums', compact('albums', 'category'));
     }
 
     /**
@@ -39,13 +45,14 @@ class GalleryAlbumsController extends Controller
      */
     public function store(Request $request)
     {
+
         $album = new GalleryAlbums;
-        $album->name = $request->album_name;
-        $album->gallery_categories_id = $request->category_id;
+        $album->name = $request->new_album_name;
+        $album->gallery_categories_id = $request->category;
 
-        $categoryName = GalleryCategories::find($request->category_id);
+        $categoryName = GalleryCategories::find($request->category);
 
-        File::MakeDirectory(public_path() . $this->gallery_path . '/' . strToLower($categoryName->name) . '/' . strToLower($request->album_name));
+        File::MakeDirectory(public_path() . $this->gallery_path . '/' . strToLower($categoryName->name) . '/' . strToLower($request->new_album_name));
 
         $album->save();
 
@@ -60,7 +67,9 @@ class GalleryAlbumsController extends Controller
      */
     public function show($id)
     {
-        //
+        $albums = GalleryAlbums::with('galleryCategories')->where('id', '=', $id)->get();
+
+        return view('admin.gallery.albums', compact('albums'));
     }
 
     /**
@@ -90,7 +99,7 @@ class GalleryAlbumsController extends Controller
                        public_path() . $this->gallery_path . '/' . strtolower($category->name) . '/' . strToLower($request->album_name));
 
         $album->name = $request->album_name;
-        
+        $album->description = $request->album_description;
 
         $album->save();
 
