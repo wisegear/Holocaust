@@ -10,7 +10,7 @@
       <h2 class="text-lg font-bold">Most recent images added to the gallery</h2>
       <p class="text-sm text-gray-500 pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales neque nec blandit dignissim. Donec metus lorem, imperdiet scelerisque viverra in, lacinia dignissim ex. Maecenas nunc nunc, ornare in nibh sed, ultricies ullamcorper turpis. Sed leo</p>
     </div>
-      <div class="grid grid-cols-3 gap-10">
+      <div class="grid grid-cols-4 gap-5">
         @foreach ($recent_images as $image)
         <div class="relative">
           <a href="/gallery/{{$image->id}}" class="">

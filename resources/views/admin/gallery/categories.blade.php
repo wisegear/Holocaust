@@ -29,9 +29,9 @@
 
 <!-- List Categories and albums for editing -->
 
-    <div class="grid grid-cols-3 gap-4 py-10">
+    <div class="grid grid-cols-3 gap-8 py-10">
         @foreach($categories as $category)
-            <div>   
+            <div class="relative">   
                 <!-- form to manage category name and editing it -->
                 <form method="POST" action="/admin/gallery-categories/{{ $category->id }}" onsubmit="return confirm('Do you really want to change this category name?');">
                 {{ csrf_field() }}
@@ -42,7 +42,7 @@
                     <a class="border rounded-md bg-blue-300 text-xs py-1 px-2 hover:bg-blue-400" href="/admin/gallery-albums?category={{$category->id}}" role="button">Get Albums</a>
                 </form>
                 <!-- form to delete category if empty -->
-                <form action="/admin/gallery-categories/{{ $category->id }}" method="POST" onsubmit="return confirm('Do you really want to delete this category?');">
+                <form action="/admin/gallery-categories/{{ $category->id }}" method="POST" onsubmit="return confirm('Do you really want to delete this category?');" class="absolute top-3 right-5">
                 {{ csrf_field() }}
                 {{ method_field ('DELETE') }} 
                     @if ( count($category->galleryalbums) > 0)                        

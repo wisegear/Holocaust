@@ -17,22 +17,26 @@
                 <tr class="border bg-gray-50">
                     <th class="border w-1/12">ID</th>
                     <th class="border w-3/12">Title</th>
-                    <th class="border w-1/12">Name</th>
+                    <th class="border w-3/12">Category</th>
+                    <th class="border w-3/12">Album</th>
+                    <th class="border w-1/12">Image</th>
                     <th class="border w-1/12">Date Created</th>
                     <th class="border w-1/12">Published</th>
                     <th class="border w-1/12">Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="text-sm">
             @foreach ($gallery_images as $image)
                 <tr class="border">
                     <td class="border">{{ $image->id }}</td>
                     <td class="border"><a href="/gallery/{{ $image->id }}" class="text-indigo-700 hover:text-indigo-300">{{ $image->title }}</a></td>
-                    <td class="border text-xs p-2">{{ $image->image }}</td>
+                    <td class="border">{{ $image->galleryalbums->gallerycategories->name }}</td>
+                    <td class="border">{{ $image->galleryalbums->name }}</td>
+                    <td class="border text-xs p-2"><img src="{{$gallery_path}}/{{$image->galleryalbums->gallerycategories->name}}/{{$image->galleryAlbums->name}}/thumb-{{$image->image}}"></td>
                     <td class="border">{{ $image->created_at->format('d-m-Y') }}</td>
                     <td class="border">{{ $image->published }}</td>
                     <td class="border">
-                    <form action="/gallery/{{ $image->id }}" method="POST" onsubmit="return confirm('Do you really want to delete this Image?');">
+                    <form action="/gallery/{{ $image->id }}" method="POST" onsubmit="return confirm('Do you really want to delete this Image?');" class="flex justify-evenly w-20">
                         {{ csrf_field() }}
                         {{ method_field ('DELETE') }} 			
                         <a class="border rounded-md bg-yellow-500 p-1 inline-block text-xs text-white font-bold" href="/gallery/{{ $image->id }}/edit" role="button">Edit</a>

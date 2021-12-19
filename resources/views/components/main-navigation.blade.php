@@ -15,7 +15,7 @@
             <p class="">{{ Auth::user()->name }}<button class="user-menu-toggle pl-2 text-sm text-red-500 hover:text-red-300">&#9660;</button></p>
             <div class="user-menu absolute flex flex-col w-full text-center bg-gray-100 top-10 right-0 p-4 space-y-4 hidden">
             <a href="/logout" class="hover:text-red-500">Logout</a>
-            <a href="/profile/{{ Auth::user()->name }}" class="hover:text-red-500">Profile</a>
+            <a href="/profile/{{ Auth::user()->name_slug }}" class="hover:text-red-500">Profile</a>
             <a href="/support" class="hover:text-red-500">Support Tickets</a>
                 @can('Admin')
                     <div class="border-t py-2">
@@ -55,7 +55,7 @@
             <p class="">{{ Auth::user()->name }}<button class="mobile-user-menu-toggle pl-2 text-sm text-red-500 hover:text-red-300">&#9660;</button></p>
             <div class="mobile-user-menu relative flex flex-col w-full text-center p-4 space-y-4 ">
             <a href="/logout" class="hover:text-red-500">Logout</a>
-            <a href="/profile/{{ Auth::user()->name }}" class="hover:text-red-500">Profile</a>
+            <a href="/profile/{{ Auth::user()->name_slug }}" class="hover:text-red-500">Profile</a>
             <a href="/support" class="hover:text-red-500">Support Tickets</a>
                 @can('Admin')
                     <div class="border-t py-2">

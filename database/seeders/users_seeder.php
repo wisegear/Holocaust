@@ -18,6 +18,7 @@ class users_seeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'Lee Wisener',
+            'name_slug' => 'Lee-Wisener',
             'email' => 'lee@wisener.net',
             'password' => bcrypt('password'),
             'created_at' => date('Y-m-d H:i:s'),
@@ -25,7 +26,8 @@ class users_seeder extends Seeder
             ]);
 
         DB::table('users')->insert([
-            'name' => 'Banned',
+            'name' => 'Banned Member',
+            'name_slug' => 'Banned-Member',
             'email' => 'banned@wisener.net',
             'password' => bcrypt('password'),
             'created_at' => date('Y-m-d H:i:s'),
@@ -33,7 +35,8 @@ class users_seeder extends Seeder
             ]);
 
         DB::table('users')->insert([
-            'name' => 'Pending',
+            'name' => 'Pending Member',
+            'name_slug' => 'Pending-Member',
             'email' => 'pending@wisener.net',
             'password' => bcrypt('password'),
             'created_at' => date('Y-m-d H:i:s'),
@@ -42,6 +45,7 @@ class users_seeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'Member',
+            'name_slug' => 'Member',
             'email' => 'member@wisener.net',
             'password' => bcrypt('password'),
             'created_at' => date('Y-m-d H:i:s'),

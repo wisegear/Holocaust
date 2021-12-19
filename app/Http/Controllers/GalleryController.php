@@ -35,7 +35,7 @@ class GalleryController extends Controller
    public function __construct()
    {
 		// Handle user authentication for each of the methods.
-      $this->middleware('auth', ['except' => ['index', 'show', 'albums', 'images', 'tag_search']]);      
+      $this->middleware('auth', ['except' => ['index', 'show', 'category', 'album', 'image', 'tag_search']]);      
    }
 		
 	//*******************************************************
@@ -66,19 +66,24 @@ class GalleryController extends Controller
     }
 
 	//*******************************************************
-  	//  Albums index page
+  	//  Category index page
   	//*******************************************************
 
-   public function albums($category)
+   public function category($category)
    {
       //  Bring in the elements we need from elsewhere
       $gallery_path = $this->gallery_path;
+
+      // get category ID
+
+      $getCategory = GalleryCategories::where('slug', $category)->first();
+
 		
-			//  Get additional elements from this method.
-      $gallery_albums = GalleryAlbums::with('galleryImages', 'galleryCategories')->where('gallery_categories_id', '=', $category)->paginate(12);
+		//  Get additional elements from this method.
+      $gallery_albums = GalleryAlbums::with('galleryImages', 'galleryCategories')->where('gallery_categories_id', $getCategory->id)->paginate(12);
 
       //  Get Category name
-      $gallery_category = GalleryCategories::find($category);
+      $gallery_category = GalleryCategories::find($getCategory->id);
 			
 			// Prepare array to pass all the data to the view.
       $data = array(	
@@ -88,21 +93,26 @@ class GalleryController extends Controller
 						 	);
 		 
       // Return the view to the viewer.
-      return view('gallery.albums')->with($data);
+      return view('gallery.category')->with($data);
    }
+
+
+
  
 	//*******************************************************
-  	//  Images index page
+  	//  Album page displaying images in that album
   	//*******************************************************
 	
-   public function images($album)
+   public function album($album)
    {
       //  Bring in the elements we need from elsewhere
       $gallery_path = $this->gallery_path;
 		
 		//  Get additional elements from this method.
-		$album = GalleryAlbums::find($album);
-        $gallery_images = GalleryImages::where('gallery_albums_id', '=', $album->id)->paginate(12);
+		$album = GalleryAlbums::where('slug', $album)->first();
+
+
+       $gallery_images = GalleryImages::where('gallery_albums_id', '=', $album->id)->paginate(12);
 		$album_path = strtolower( $gallery_path . '/' . $album->galleryCategories->name . '/' . $album->name . '/' . 'thumb-' );			
 			
 		// Prepare array to pass all the data to the view.
@@ -113,7 +123,7 @@ class GalleryController extends Controller
                       );
    
       // Return the view to the viewer.
-      return view('gallery.images')->with($data);
+      return view('gallery.album')->with($data);
    }
     
 	//*******************************************************
@@ -203,13 +213,15 @@ class GalleryController extends Controller
   	//  Show the image view
   	//*******************************************************
 	
-   public function show($id)
+   public function image($image)
    {
    	//  Bring in the elements we need from elsewhere
 		$gallery_path = $this->gallery_path;
-      	$gallery_image = GalleryImages::with('comments')->find($id);
-		  //$post = BlogPosts::with('comments')->orderBy('created_at', 'desc')->with('BlogCategories', 'Users', 'BlogTags')->where('slug', $slug)->first();
+
+      $gallery_image = GalleryImages::with('comments')->where('slug', $image)->first();
+		//$post = BlogPosts::with('comments')->orderBy('created_at', 'desc')->with('BlogCategories', 'Users', 'BlogTags')->where('slug', $slug)->first();
 		//  Get additional elements from this method.
+
 		$image_path = strtolower( $gallery_image->galleryAlbums->galleryCategories->name . '/' . $gallery_image->galleryAlbums->name . '/' );
 		
 		// Prepare array to pass all the data to the view.
@@ -219,7 +231,7 @@ class GalleryController extends Controller
                      );
       
 		// Return the view to the viewer.
-      return view('gallery.view')->with($data);
+      return view('gallery.image')->with($data);
    }
 
 	//*******************************************************

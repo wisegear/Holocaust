@@ -8,6 +8,9 @@ use App\Models\GalleryImages;
 
 class AdminGalleryController extends Controller
 {
+
+    public $gallery_path = '/images/gallery';
+
     /**
      * Display a listing of the resource.
      *
@@ -15,9 +18,10 @@ class AdminGalleryController extends Controller
      */
     public function index()
     {
-        $gallery_images = GalleryImages::paginate(15);
+        $gallery_images = GalleryImages::with('galleryalbums')->paginate(15);
+        $gallery_path = $this->gallery_path;
 
-        return view('admin.gallery.index', compact('gallery_images'));
+        return view('admin.gallery.index', compact('gallery_images', 'gallery_path'));
     }
 
     /**

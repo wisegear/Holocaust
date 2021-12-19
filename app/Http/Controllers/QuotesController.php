@@ -35,7 +35,7 @@ class QuotesController extends Controller
       elseif (isset($_GET['author']))
       {
          $quotes = Quotes::where(function ($query) {
-            $query->where('author', 'LIKE', '%' . $_GET['author'] . '%')
+            $query->where('author_slug', 'LIKE', '%' . $_GET['author'] . '%')
                   ->where('published', true);
          })
          
@@ -47,7 +47,7 @@ class QuotesController extends Controller
          $quotes = Quotes::where('published', true)->paginate(12);
       }
 
-        $unique = Quotes::distinct('author')->limit(10)->pluck('author');
+        $unique = Quotes::distinct()->limit(10)->pluck('author'); 
         $unpublished = Quotes::where('published', false)->get();
            
         //  Return quotes index page

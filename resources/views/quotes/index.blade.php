@@ -45,7 +45,7 @@
     <div class="flex flex-col mb-5">
       <h2 class="text-lg font-bold">Popular Authors</h2>
       @foreach ($unique as $item)
-        <a href="/quotes?author={{$item}}" class="py-1 hover:text-red-500 text-sm">{{$item}}</a>
+        <a href="/quotes?author={{Str::slug($item, '-')}}" class="py-1 hover:text-red-500 text-sm">{{$item}}</a>
         @endforeach
     </div>
     <!-- For admin only - unpublished quotes -->

@@ -10,7 +10,7 @@
          @foreach ($gallery_albums as $gallery_album)
           <div class="relative">
             @if ($gallery_album->galleryImages->count() > 0)
-            <a href="/gallery/images/{{$gallery_album->id}}">
+            <a href="/gallery/album/{{$gallery_album->slug}}">
               <img src="{{ $gallery_path }}/{{ strtolower($gallery_album->GalleryCategories->name)}}/{{ strtolower($gallery_album->name) }}/thumb-{{$gallery_album->galleryImages->random()->image}}" alt="" class=" rounded-md shadow-md">
                 <div class="absolute right-0 top-5">
                   <span class="py-1 px-4 rounded-tl-md rounded-bl-md border-t border-b border-l bg-red-100 text-xs font-bold shadow-md">{{ $gallery_album->name }}</span>

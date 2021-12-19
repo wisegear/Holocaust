@@ -49,11 +49,11 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($name)
+    public function show($name_slug)
     {
         //Display a users profile
 
-        $user = User::where('name', $name)->first();
+        $user = User::where('name_slug', $name_slug)->first();
 
         return view ('profile.show', compact('user'));
     }

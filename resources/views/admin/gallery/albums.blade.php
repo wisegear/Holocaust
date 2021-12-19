@@ -32,7 +32,7 @@
 
     <div class="grid grid-cols-3 gap-4 py-10">
         @foreach($albums as $album)
-            <div>   
+            <div class="relative">   
                 <!-- form to manage category name and editing it -->
                 <form method="POST" action="/admin/gallery-albums/{{ $album->id }}" onsubmit="return confirm('Do you really want to change this album name?');">
                 {{ csrf_field() }}
@@ -42,7 +42,7 @@
                     <button class="border rounded-md py-1 px-2 bg-indigo-300 text-xs mb-2" type="submit">Update</button>
                 </form>
                 <!-- form to delete album if empty -->
-                <form action="/admin/gallery-albums/{{ $album->id }}" method="POST" onsubmit="return confirm('Do you really want to delete this album?');">
+                <form action="/admin/gallery-albums/{{ $album->id }}" method="POST" onsubmit="return confirm('Do you really want to delete this album?');" class="absolute top-3 right-5">
                 {{ csrf_field() }}
                 {{ method_field ('DELETE') }} 
                     @if ( count($album->galleryimages) > 0)                        

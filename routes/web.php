@@ -49,10 +49,12 @@ Route::get('/important', [PagesController::class, 'important']);
 Route::resource('/quotes', QuotesController::class);
 Route::resource('/blog', BlogController::class);
 Route::resource('/timeline', TimelineController::class);
+
+
 Route::resource('/gallery', GalleryController::class);
-Route::get('/gallery/albums/{albums}', [GalleryController::class, 'albums']);
-Route::get('/gallery/images/{album}', [GalleryController::class, 'images']);
-Route::get('gallery/search/tags/{tag}', [GalleryController::class, 'tag_search']);
+Route::get('/gallery/category/{category}', [GalleryController::class, 'category']);
+Route::get('/gallery/album/{album}', [GalleryController::class, 'album']);
+Route::get('/gallery/image/{image}', [GalleryController::class, 'image']);
 
 // Protected routes only accessible by member group.
 

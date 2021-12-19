@@ -14,7 +14,7 @@
             <h2 class="text-lg font-bold">Gallery Categories</h2>	
               <div class="flex flex-col space-y-1 mt-2">
               @foreach ($gallery_categories as $gallery_category)
-                  <a href="/gallery/albums/{{$gallery_category->id}}">{{ $gallery_category->name }}</a>
+                  <a href="/gallery/category/{{$gallery_category->slug}}">{{ $gallery_category->name }}</a>
               @endforeach 
             </div>	
           </div>

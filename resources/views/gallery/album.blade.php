@@ -9,7 +9,7 @@
     <div class="grid grid-cols-3 gap-10">     
     @foreach ($gallery_images as $gallery_image)
       <div class="relative">
-        <a href="/gallery/{{$gallery_image->id}}"><img class="min-w-0 rounded-md shadow-" 
+        <a href="/gallery/image/{{$gallery_image->slug}}"><img class="min-w-0 rounded-md shadow-" 
         src="/images/gallery/{{ strtolower($gallery_image->GalleryAlbums->GalleryCategories->name) }}/{{ strtolower($gallery_image->GalleryAlbums->name) }}/thumb-{{$gallery_image->image}}">
         <div class="absolute right-0 top-5">
           <span class="py-1 px-4 rounded-tl-md rounded-bl-md border-t border-b border-l bg-red-100 text-xs font-bold shadow-md">{{ $gallery_image->title }}</span>

@@ -9,7 +9,7 @@
             <img src="/images/media/medium-{{ $post->image }}" alt="" class="rounded-md mb-4">
             <h2 class="text-2xl font-bold hover:text-red-500 mb-2"><a href="/blog/{{$post->slug}}">{{ $post->title }}</a></h2>
             <div class="text-sm mb-4 flex space-x-6">
-                <p>Posted by <a href="/profile/{{ $post->users->name }}" class="text-red-500">{{ $post->users->name }}</a></p>
+                <p>Posted by <a href="/profile/{{ $post->users->name_slug }}" class="text-red-500">{{ $post->users->name }}</a></p>
                 <p>around {{ $post->created_at->diffForHumans() }}</p>
                 <p>in <a href="/blog/?category={{$post->blogcategories->name }}" class="text-red-500">{{ $post->blogcategories->name }}</a></p>
             </div>

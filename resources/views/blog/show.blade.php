@@ -21,7 +21,7 @@
 		@foreach( $post->comments->sortByDesc('created_at') as $comment)
 		<div class="flex space-x-5 text-sm">
 			<!-- Name of the user commenting -->
-			<a href="/profile/{{ $comment->users->name }}" class="text-red-500">{{ $comment->users->name }}</a>
+			<a href="/profile/{{ $comment->users->name_slug }}" class="text-red-500">{{ $comment->users->name }}</a>
 				<a>{{ $comment->created_at->diffForHumans() }}</a>
 				<!-- Only admin can edit/delete -->
 				@can ('Admin')
