@@ -13,7 +13,7 @@
       <div class="grid grid-cols-4 gap-5">
         @foreach ($recent_images as $image)
         <div class="relative">
-          <a href="/gallery/{{$image->id}}" class="">
+          <a href="/gallery/image/{{$image->slug}}" class="">
             <img src="{{ $gallery_path }}/{{ strtolower($image->GalleryAlbums->GalleryCategories->name) }}/{{ strtolower($image->GalleryAlbums->name) }}/thumb-{{$image->image}}" 
               alt="" class=" rounded-md shadow-md">
               <div class="absolute right-0 top-5">
