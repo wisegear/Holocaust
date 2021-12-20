@@ -8,6 +8,7 @@ use App\Models\GalleryCategories;
 use App\Models\GalleryAlbums;
 use Validator;
 use File;
+use Str;
 
 class GalleryCategoriesController extends Controller
 {
@@ -52,6 +53,7 @@ class GalleryCategoriesController extends Controller
         $category = new GalleryCategories;             
 
         $category->name = $request->new_category_name;
+        $category->slug = Str::slug($request->new_category_name, '-');
 
         File::MakeDirectory(public_path() . $this->gallery_path . '/' . strtolower($request->new_category_name));
 
@@ -89,6 +91,7 @@ class GalleryCategoriesController extends Controller
         File::Move(public_path() . $this->gallery_path . '/' . strtolower($category->name), public_path() . $this->gallery_path . '/' . strtolower($request->category_name));
 
         $category->name = $request->category_name;
+        $category->slug = Str::slug($category->name, '-');
         $category->description = $request->category_description;
 
 

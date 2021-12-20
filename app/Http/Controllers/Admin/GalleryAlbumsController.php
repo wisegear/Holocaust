@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\GalleryCategories;
 use App\Models\GalleryAlbums;
 use File;
+use Str;
 
 class GalleryAlbumsController extends Controller
 {
@@ -48,6 +49,8 @@ class GalleryAlbumsController extends Controller
 
         $album = new GalleryAlbums;
         $album->name = $request->new_album_name;
+        $album->slug = Str::slug($request->new_album_name, '-');
+
         $album->gallery_categories_id = $request->category;
 
         $categoryName = GalleryCategories::find($request->category);
@@ -99,6 +102,7 @@ class GalleryAlbumsController extends Controller
                        public_path() . $this->gallery_path . '/' . strtolower($category->name) . '/' . strToLower($request->album_name));
 
         $album->name = $request->album_name;
+        $album->slug = Str::slug($request->album_name, '-');
         $album->description = $request->album_description;
 
         $album->save();
