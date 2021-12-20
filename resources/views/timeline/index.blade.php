@@ -35,7 +35,7 @@
 
       <!-- Timeline display -->
 
-      <div class="timeline w-4/5 mx-auto relative">
+      <div class="timeline w-full mx-auto relative">
          @foreach ($events->chunk(2) as $two_events)
             <!-- Left side of the timeline -->
             @foreach($two_events as $event)
@@ -46,7 +46,7 @@
                <div class="timeline-container timeline-left">
                   <div class="timeline-content">
                      <h2 class="text-lg font-bold mt-4 pb-2">{{ $event->title }}</h2>
-                     <p class="text-sm text-gray-600">{{ $event->description }}</p>
+                     <p class="text-xs text-gray-600">{{ $event->description }}</p>
                      <!-- Admin edit & delete options -->
                      <div class="flex space-x-2 justify-end">
                         @can ('Admin')
@@ -69,7 +69,7 @@
                <div class="timeline-container timeline-right">  
                   <div class="timeline-content">
                      <h2 class="text-lg font-bold">{{ $event->title }}</h2>
-                     <p class="text-sm text-gray-600">{{ $event->description }}</p>
+                     <p class="text-xs text-gray-600">{{ $event->description }}</p>
                      <!-- Admin edit & delete options -->
                      <div class="flex space-x-2 justify-end">
                         @can ('Admin')
