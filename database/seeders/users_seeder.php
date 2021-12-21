@@ -18,7 +18,7 @@ class users_seeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'Lee Wisener',
-            'name_slug' => 'Lee-Wisener',
+            'name_slug' => 'lee-wisener',
             'email' => 'lee@wisener.net',
             'password' => bcrypt('password'),
             'created_at' => date('Y-m-d H:i:s'),

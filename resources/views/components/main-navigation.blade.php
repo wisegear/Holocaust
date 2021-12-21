@@ -19,7 +19,7 @@
             <a href="/support" class="hover:text-red-500">Support Tickets</a>
                 @can('Admin')
                     <div class="border-t py-2">
-                        <a href="admin" class="">Admin Area</a>
+                        <a href="/admin" class="">Admin Area</a>
                     </div>
                 @endcan
             </div>
@@ -59,7 +59,7 @@
             <a href="/support" class="hover:text-red-500">Support Tickets</a>
                 @can('Admin')
                     <div class="border-t py-2">
-                        <a href="admin" class="hover:text-red-500">Admin Area</a>
+                        <a href="/admin" class="hover:text-red-500">Admin Area</a>
                     </div>
                 @endcan
             </div>
