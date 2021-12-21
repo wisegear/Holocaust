@@ -8,7 +8,7 @@
     <div class="w-9/12">
     <div class="border-b mb-5">
       <h2 class="text-lg font-bold">Most recent images added to the gallery</h2>
-      <p class="text-sm text-gray-500 pb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales neque nec blandit dignissim. Donec metus lorem, imperdiet scelerisque viverra in, lacinia dignissim ex. Maecenas nunc nunc, ornare in nibh sed, ultricies ullamcorper turpis. Sed leo</p>
+      <p class="text-sm text-gray-500 pb-2">The most recent images added to the gallery are displayed below.  Use the categories list on the right had menu to find more specific images or the search box.  Popular tags have also been added to quickly search for image groups that are popular.</p>
     </div>
       <div class="grid grid-cols-4 gap-5">
         @foreach ($recent_images as $image)
