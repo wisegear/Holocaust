@@ -59,6 +59,8 @@ class QuotesController extends Controller
   	//******************************************************* 
     public function create()
     {
+      $this->authorize('Admin');
+
       //  Return the form to create a new event
       return view('quotes.create');
         
@@ -70,6 +72,8 @@ class QuotesController extends Controller
    
    public function store(Request $request)
    {
+      $this->authorize('Admin');
+
       // Open the DB ready for new event
       $new_quote = new Quotes;
       
@@ -106,6 +110,8 @@ class QuotesController extends Controller
    
    public function edit($id)
    {
+      $this->authorize('Admin');
+
       // Get required data elements
       $quote = Quotes::find($id);
       
@@ -119,6 +125,8 @@ class QuotesController extends Controller
    
    public function update(Request $request, $id)
    {
+      $this->authorize('Admin');
+
       // Get required data elements
       $edit_quote = Quotes::find($id);
       
@@ -146,6 +154,8 @@ class QuotesController extends Controller
    
    public function destroy($id)
    {
+      $this->authorize('Admin');
+      
       // Destroy the timeline event
       Quotes::destroy($id);
       

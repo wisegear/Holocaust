@@ -132,9 +132,11 @@ class GalleryController extends Controller
 	
    public function create()
    {
+   	$this->authorize('Admin');
+
     	//  Get additional elements from this method.
 		$gallery_albums = GalleryAlbums::all();
-      	$gallery_categories = GalleryCategories::all();
+      $gallery_categories = GalleryCategories::all();
       
 		// Prepare array to pass all the data to the view.
       $data = array('gallery_categories' => $gallery_categories,
@@ -151,7 +153,7 @@ class GalleryController extends Controller
 	
    public function store(Request $request)
    {
-		
+		$this->authorize('Admin');
 		
 			// Get the category And album names and convert to lower case to match directory on filesystem.
 			$find_album = GalleryAlbums::find($request->gallery_album_id);
@@ -240,6 +242,8 @@ class GalleryController extends Controller
 	
    public function edit($id)
    {
+   	$this->authorize('Admin');
+
 		//  Bring in the elements we need from elsewhere
 		$gallery_path = $this->gallery_path;
 		$split_tags = GalleryTags::tagsForEdit($id);
@@ -270,6 +274,8 @@ class GalleryController extends Controller
 	
    public function update(Request $request, $id)
    {
+   	$this->authorize('Admin');
+
    	//  Bring in the elements we need from elsewhere
 		$gallery_path = $this->gallery_path;
 		
@@ -362,6 +368,7 @@ class GalleryController extends Controller
    public function destroy($id)
    {
 		$this->authorize('Admin');
+		
 		//  Note:  Delete the image from the filesystem before the database, otherwise you will loose the image name.
 		$gallery_image = GalleryImages::find($id);
 		$deleting_image = $gallery_image->image;

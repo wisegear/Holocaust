@@ -28,8 +28,12 @@
 				</li>
 
 				<li class="">
-					<img src="/images/site/envelope-fill.svg" alt="" class="inline-block h-4 w-4">					
+					<img src="/images/site/envelope-fill.svg" alt="" class="inline-block h-4 w-4">	
+					@if($user->email_visible === 0)
+						Not shared
+					@else				
 					{{ $user->email }}
+					@endif
 				</li>
 
 			</ul>
