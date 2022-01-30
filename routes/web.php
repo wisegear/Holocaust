@@ -55,6 +55,7 @@ Route::resource('/gallery', GalleryController::class);
 Route::get('/gallery/category/{category}', [GalleryController::class, 'category']);
 Route::get('/gallery/album/{album}', [GalleryController::class, 'album']);
 Route::get('/gallery/image/{image}', [GalleryController::class, 'image']);
+Route::get('/gallery/search/tags/{tag}', [GalleryController::class, 'tag_search']);
 
 // Protected routes only accessible by member group.
 

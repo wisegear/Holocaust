@@ -418,6 +418,7 @@ class GalleryController extends Controller
 								'popular_tags' => $popular_tags,
 								'recent_images' => $recent_images,
 								'gallery_path' => $gallery_path,
+								'searchTag' => $tag,
                      );
 		// Return the viewer to the search page with results.
       return view('gallery.search')->with($data);

@@ -12,12 +12,15 @@
     </div>
       <div class="grid grid-cols-4 gap-5">
         @foreach ($recent_images as $image)
-        <div class="relative">
+        <div class="relative shadow-md">
           <a href="/gallery/image/{{$image->slug}}" class="">
             <img src="{{ $gallery_path }}/{{ strtolower($image->GalleryAlbums->GalleryCategories->name) }}/{{ strtolower($image->GalleryAlbums->name) }}/thumb-{{$image->image}}" 
-              alt="" class=" rounded-md shadow-md">
+              alt="" class="shadow-md">
               <div class="absolute right-0 top-5">
-                <span class="py-1 px-4 rounded-tl-md rounded-bl-md border-t border-b border-l bg-red-100 text-xs font-bold shadow-md">{{ $image->galleryalbums->name }}</span>
+                <span class="py-1 px-4 border-t border-b border-l bg-gray-100 text-xs shadow-md">{{ $image->galleryalbums->name }}</span>
+              </div>
+              <div class="text-xs py-1 text-center bg-gray-50 border text-gray-600">
+                {{$image->title}}
               </div>
             </a>
         </div>
