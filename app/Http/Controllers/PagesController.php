@@ -11,7 +11,7 @@ class PagesController extends Controller
     public function home()
     {
         $quote = Quotes::all()->random(); 
-        $posts = BlogPosts::where('published', true)->orderBy('created_at', 'desc')->limit(3)->get();
+        $posts = BlogPosts::where('published', true)->orderBy('created_at', 'desc')->limit(4)->get();
 
         return view('home', compact('posts', 'quote'));
     }

@@ -113,7 +113,7 @@ class TimelineController extends Controller
       $new_event->save();
       
       // Redirect back to the timeline index
-     return redirect()->action([TimelineController::class, 'index']);
+     return back();
    }
 
    /**

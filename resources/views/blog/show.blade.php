@@ -4,11 +4,11 @@
 
 	<!-- Display Single Post-->
     <div class="">
-		<h2 class="text-2xl font-bold hover:text-red-500 text-center"><a href="/blog/{{$post->id}}">{{ $post->title }}</a></h2>
+		<h2 class="text-2xl font-bold text-center"><a>{{ $post->title }}</a></h2>
 		<p class="text-sm mb-2 text-center">{{ $post->created_at->diffForHumans() }}</p>
 		<div class="mb-10 mt-4 w-4/5 mx-auto text-center text-gray-500 text-sm">{!! $post->excerpt !!}</div>
-		<img src="/images/media/large-{{ $post->image }}" alt="" class="rounded-md mb-10 mx-auto">
-		<div class="mb-10 prose max-w-screen-lg">{!! $post->body !!}</div>
+		<img src="/images/media/large-{{ $post->image }}" alt="" class="shadow-md mb-10 mx-auto">
+		<div class="mb-10 prose max-w-screen-lg text-sm">{!! $post->body !!}</div>
     </div>
 
 	<!-- Display existing comments on the post -->
@@ -29,7 +29,7 @@
 						<form action="/comments/{{ $comment->id }}" method="POST" onsubmit="return confirm('Do you really want to delete this Comment?');">
 						{{ csrf_field() }}
 						{{ method_field ('DELETE') }} 
-						<button type="submit" class="">Del</button>
+						<button type="submit" class="text-xs">Delete</button>
 						</form>
 					@endcan
 					</a>
@@ -43,16 +43,16 @@
 
 	<!-- Must be a member to see comment box and comment -->
 	@if (Auth::check() && Auth::user()->can('Member'))
-	<div class="md:w-1/2 mx-auto my-10">
-		<p class="font-semibold text-center">Comment on this post</p>
+	<div class="md:w-3/4 mx-auto my-10">
+		<p class="text-sm text-gray-500">Comment on this post</p>
 		<form method="POST" action="/comments/{{ $post->id }}" enctype="multipart/form-data">
 		{{ csrf_field() }}      
 		{{ method_field('PUT') }}    
 			<div class="form-group">
 				<div class="mt-2" style="color: red;">{{ $errors->has('comment') ? 'At least some text is required' : '' }}</div>
-				<textarea class="w-full" name="comment" id="comment" placeholder="Reply here...">{{ old('text') }}</textarea>
+				<textarea class="w-full bg-gray-50 border-gray-200 text-sm" name="comment" id="comment" placeholder="Reply here...">{{ old('text') }}</textarea>
 			</div>
-			<div class="text-center"><button type="submit" class="border rounded-md p-2 text-sm bg-green-400">Add Comment</button></div>
+			<div class="text-center"><button type="submit" class="border rounded-md p-2 text-xs hover:border-green-500 hover:bg-green-50 mt-2">Add Reply</button></div>
 		</form>
 	</div>
 	@else <!-- If not a member show login comment -->

@@ -11,7 +11,7 @@
    <!-- Page Content -->
       @can('Admin')
          <div class="text-center mb-5">
-            <a class="border rounded-md py-1 px-2 bg-green-500 text-white text-sm font-bold" href="/timeline/create" role="button">Create new event</a>
+            <a class="border rounded-md py-2 px-2 hover:bg-green-50 hover:border-green-500 text-sm" href="/timeline/create" role="button">Create new event</a>
          </div>
       @endcan
 
@@ -23,13 +23,13 @@
 
       <div class="mb-10 w-4/5 mx-auto">
          <ul class="flex justify-center gap-5">
-         <li class="border rounded-md p-1 text-xs bg-red-100 hover:bg-red-200 font-bold" role="button"><a href="/timeline?year=earlier">Earlier</a></li>
+         <li class="border rounded-md p-1 text-xs bg-gray-50 hover:border-gray-500" role="button"><a href="/timeline?year=earlier">Earlier</a></li>
          @foreach ($uniqueYears as $year)
             @if ($year > 1932 and $year < 1946)
-               <li class="border rounded-md p-1 text-xs bg-red-50 hover:bg-red-100" role="button"><a href="/timeline?year={{$year}}">{{$year}}</a></li>
+               <li class="border rounded-md p-1 text-xs bg-gray-50 hover:border-gray-500" role="button"><a href="/timeline?year={{$year}}">{{$year}}</a></li>
             @endif
          @endforeach 
-         <li class="border rounded-md p-1 text-xs bg-red-100 hover:bg-red-200 font-bold" role="button"><a href="/timeline?year=later">Later</a></li>
+         <li class="border rounded-md p-1 text-xs bg-gray-50 hover:border-gray-500" role="button"><a href="/timeline?year=later">Later</a></li>
          </ul>
       </div>
 

@@ -11,7 +11,7 @@
 	</div>
 	<div class="flex justify-evenly items-center my-10">
 		<div class="">
-			<img src="{{ asset("images/avatars/$user->avatar") }}" class="rounded-md shadow-md">
+			<img src="{{ asset("images/avatars/$user->avatar") }}" class="shadow-md border p-1">
 		</div>
 		<div class="">
 			<ul class="text-sm space-y-1 flex flex-col justify-center">
@@ -41,7 +41,7 @@
 	</div>
 	<div class="text-center">
 	@if (empty($user->bio))
-				<p class="border p-2">User has not provided any information about themselves.</p>
+				<p class="border p-2 text-sm">User has not provided any information about themselves.</p>
 			@else
 				<p class="border rounded-md p-2 text-gray-700 text-sm">{{ $user->bio }}</p>
 			@endif
@@ -49,7 +49,7 @@
 
 		@if (Auth::user()->name === $user->name || Auth::user()->has_user_role('Admin'))
 			<div class="my-4 text-center">
-				<a class="border rounded-md py-1 px-2 text-sm bg-green-400 text-gray-800 font-semibold" href="/profile/{{ $user->name }}/edit" role="button">Edit Profile</a>
+				<a class="border rounded-md py-2 px-2 text-sm hover:border-green-500 hover:bg-green-50" href="/profile/{{ $user->name }}/edit" role="button">Edit Profile</a>
 			</div>
 		@endif
 </div>

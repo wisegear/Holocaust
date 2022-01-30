@@ -29,10 +29,10 @@ class BlogPostsFactory extends Factory
             'title' => $title,
             'slug' => $slug,
             'excerpt' => $this->faker->paragraph(2, false),
-            'body' => $this->faker->paragraph(5, false),
+            'body' => $this->faker->paragraph(20, false),
             'categories_id' => $this->faker->numberBetween(1, 5),
             'user_id' => $this->faker->numberBetween(1, 4),
-            'created_at' => $this->faker->dateTimeThisYear('-6 months'),
+            'created_at' => $this->faker->dateTimeThisYear(),
         ];
 
     }
