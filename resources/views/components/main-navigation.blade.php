@@ -1,14 +1,14 @@
 <div class="flex items-center py-4 border-b justify-between">
     <div class="md:w-2/12">
-        <h2 class="text-gray-500 text-lg font-bold"><a href="/" class="hover:text-red-500">The Holocaust</a></h2>
+        <h2 class="text-gray-500 text-lg"><a href="/" class="hover:text-gray-400">The Holocaust</a></h2>
     </div>
     <div class="space-x-4 hidden md:block md:text-center md:w-8/12">
-        <a href="/" class="hover:text-red-500">Home</a>
-        <a href="/blog" class="hover:text-red-500">Blog</a>
-        <a href="/quotes" class="hover:text-red-500">Quotes</a>
-        <a href="/timeline" class="hover:text-red-500">Timeline</a>
-        <a href="/gallery" class="hover:text-red-500">Gallery</a>
-        <a href="/contact" class="hover:text-red-500">Contact</a>
+        <a href="/" class="hover:text-gray-500">Home</a>
+        <a href="/blog" class="hover:text-gray-500">Blog</a>
+        <a href="/quotes" class="hover:text-gray-500">Quotes</a>
+        <a href="/timeline" class="hover:text-gray-500">Timeline</a>
+        <a href="/gallery" class="hover:text-gray-500">Gallery</a>
+        <a href="/contact" class="hover:text-gray-500">Contact</a>
     </div>
     <div class="space-x-4 hidden md:block md:text-right md:w-2/12 relative">
         @if(Auth::check())
@@ -24,8 +24,8 @@
                 @endcan
             </div>
         @else
-            <a href="/login" class="hover:text-red-500">Login</a>
-            <a href="/register" class="hover:text-red-500">Register</a>
+            <a href="/login" class="border p-2 rounded hover:bg-gray-100 hover:text-gray-900">Login</a>
+            <a href="/register" class="border p-2 rounded hover:bg-gray-100 hover:text-gray-900">Register</a>
         @endif
 
     </div> 
