@@ -1,3 +1,184 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+/* Wise1text Styles */
+
+.wise1text blockquote {
+    @apply text-red-400;
+    @apply border-l-4 border-l-red-100 text-sm my-2 px-4;
+}
+
+.wise1text img {
+    @apply mx-auto;
+    @apply shadow-md;
+    @apply rounded-md;
+}
+
+.wise1text h1 { font-size: 2rem; }
+.wise1text h2 { font-size: 1.8rem; }
+.wise1text h3 { font-size: 1.6rem; }
+.wise1text h4 { font-size: 1.4rem; }
+.wise1text h5 { font-size: 1.2rem; }
+.wise1text h6 { font-size: 1rem; }
+
+.wise1text h2, .wise1text h3, .wise1text h4 {
+    @apply mt-6;
+    @apply mb-2;
+}
+
+.wise1text p {
+    @apply mt-4;
+    @apply mb-4;
+}
+
+.wise1text strong {
+    @apply font-normal;
+    @apply text-red-500;
+}
+
+.wise1text u {
+    text-decoration: none;
+    border-bottom: 2px solid;
+    @apply border-b-red-500;
+}
+
+.wise1text a:link, .wise1text a:visited { @apply text-red-500; }
+
+.wise1text ol {
+    @apply my-2;
+    list-style-type: decimal;
+    list-style-position: inside;
+}
+
+.wise1text ol li::marker { @apply text-red-500; }
+
+.wise1text ul {
+    @apply my-4;
+    list-style-type: square;
+    list-style-position: inside;
+}
+
+.wise1text ul li::marker { @apply text-red-500; }
+
+.wise1text table {
+    margin: 25px auto;
+    width: 100%;
+}
+
+.wise1text table, th, td {
+    border: 1px solid lightgray;
+}
+
+.wise1text table, th, td {
+    padding: 5px 10px;
+}
+
+.wise1text th {
+    @apply bg-gray-500;
+    @apply text-white;
+}
+
+/* Timeline */
+
+
+.timline-outer {
+  position: relative;
+}
+
+.timeline-outer::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: gray;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+.timeline-container {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+}
+
+.timeline-container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -13px;
+  background-color: rgb(245, 239, 239);
+  border: 4px solid gray;
+  top: 20px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+
+.timeline-left {
+  left: 0;
+}
+
+.timeline-left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid gray;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent grey;
+}
+
+
+.timeline-right {
+  left: 50%;
+}
+
+.timeline-right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid gray;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent grey transparent transparent;
+}
+
+
+.timeline-right::after {
+  left: -12px;
+}
+
+
+.timeline-content {
+  padding: 20px 30px;
+  position: relative;
+  border: 1px solid gray;
+  border-radius: 6px;
+}
+
+.timeline-date-right {
+  position: absolute;
+  width: 200px;
+  top: 10%;
+  left: 115%;
+  font-weight: bold;
+}
+
+.timeline-date-left {
+  position: absolute;
+  width: 200px;
+  top: 10%;
+  right: 98%;
+  font-weight: bold;
+}
+
+/* End Timeline */
