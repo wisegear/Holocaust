@@ -5,7 +5,7 @@
     <div>
         <img src="/images/site/Logo.webp" class="mx-auto">
         <div class="w-3/4 mx-auto py-4">
-            <p class="text-sm text-center">This website is dedicated to learning more about the Holocaust. There are so many elements to what happened between 1933 and 1945 and I believe it is important to discuss them all. Shocking at times, often harrowing. Millions died at the hands of the Nazis, only by discussing and learning more about the Holocaust can we ensure future generations never forget and those that lost their lives are never forgotten.</p>
+            <p class="text-center">This website is dedicated to learning more about the Holocaust. There are so many elements to what happened between 1933 and 1945 and I believe it is important to discuss them all. Shocking at times, often harrowing. Millions died at the hands of the Nazis, only by discussing and learning more about the Holocaust can we ensure future generations never forget and those that lost their lives are never forgotten.</p>
         </div>
         <div class="flex justify-center py-2 gap-4">
             <a href="/important"><button class="border rounded-md text-red-800 uppercase py-2 px-2 text-xs hover:text-red-400">Important</button></a>
@@ -14,7 +14,7 @@
     </div>
 
     <!-- Display most recent blog posts -->
-    <div class="border-b my-5 text-sm font-bold text-red-800">
+    <div class="border-b my-5  text-red-800">
         <p>Recent Blog Posts</p>
     </div>
 
@@ -29,8 +29,8 @@
     </div>
 
     <!-- Display most recent blog posts -->
-    <div class="py-10 md:w-1/2 mx-auto">
-        <p class="border-b text-sm font-bold text-red-800">Recent Blog Posts</p>
+    <div class="py-10 md:w-3/4 mx-auto">
+        <p class="border-b mb-2 text-red-800">Recent Blog Posts</p>
         @foreach($posts as $post)
             <div class="flex justify-between items-center w-full space-y-2">
                 <?php 
