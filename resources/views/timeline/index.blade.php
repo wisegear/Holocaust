@@ -44,9 +44,9 @@
                @if($loop->odd)
                <div class="timeline-container timeline-left">
                   <div class="timeline-content">
-                     <h3 class="text-lg font-bold text-right">{{ date('d M Y', strtotime($event->event_date)) }}</h3> 
-                     <h2 class="text-lg font-bold mt-2 pb-2">{{ $event->title }}</h2>
-                     <p class="text-xs text-gray-600">{{ $event->description }}</p>
+                     <h3 class="text-lg font-bold text-right text-gray-600 mb-4">{{ date('d M Y', strtotime($event->event_date)) }}</h3> 
+                     <h2 class="text-lg font-bold mt-2 pb-2 text-gray-400 text-center">{{ $event->title }}</h2>
+                     <div class="text-sm text-gray-600 text-center">{!! $event->description !!}</div>
                      <!-- Admin edit & delete options -->
                      <div class="flex space-x-2 justify-end">
                         @can ('Admin')
@@ -65,9 +65,9 @@
                @elseif($loop->even)
                <div class="timeline-container timeline-right">  
                   <div class="timeline-content">
-                     <h3 class="text-lg font-bold">{{ date('d M Y', strtotime($event->event_date)) }}</h3> 
-                     <h2 class="text-lg font-bold mt-2 pb-2">{{ $event->title }}</h2>
-                     <p class="text-xs text-gray-600">{{ $event->description }}</p>
+                     <h3 class="text-lg font-bold text-gray-600 mb-4">{{ date('d M Y', strtotime($event->event_date)) }}</h3> 
+                     <h2 class="text-xl font-bold mt-2 pb-2 text-gray-400 text-center">{{ $event->title }}</h2>
+                     <div class="text-sm text-gray-600 text-center">{!! $event->description !!}</div>
                      <!-- Admin edit & delete options -->
                      <div class="flex space-x-2 justify-end">
                         @can ('Admin')

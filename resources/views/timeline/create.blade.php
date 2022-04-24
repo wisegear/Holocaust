@@ -1,5 +1,19 @@
 <x-layout>
 
+<!-- Adding TinyMCE editor, this is the code required to make it work further down-->
+<script type="text/javascript">
+	tinymce.init({
+		selector: "textarea",
+		height: "200",
+		plugins: [
+			"advlist autolink lists link image charmap print preview anchor",
+			"searchreplace visualblocks code fullscreen",
+			"insertdatetime media table paste"
+		],
+		toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+	});
+</script>
+
 	<div>
 		<div class="">
 			<div class="mb-10">
