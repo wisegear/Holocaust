@@ -3,7 +3,7 @@
    <!-- Page header -->
 
       <div class="mb-5 w-1/2 mx-auto">
-         <h2 class="text-xl font-bold text-center">Timeline</h2>
+         <h2 class="text-xl font-bold pb-2 text-center">Timeline</h2>
          <p class="text-center text-gray-500 text-sm">Use the timeline to search for events related to the Holocaust.  Each page has 50 events starting from
             the earliest event through to the last.  You can select a specific year or search for a specific event.  The results will always be in chronological order.</p>
       </div>
@@ -35,17 +35,17 @@
 
       <!-- Timeline display -->
 
-      <div class="timeline w-full mx-auto relative">
+      <div class="timeline">
+
          @foreach ($events->chunk(2) as $two_events)
+
             <!-- Left side of the timeline -->
             @foreach($two_events as $event)
                @if($loop->odd)
-               <div class="timeline-date-right">
-                  <h3 class="text-lg font-bold">{{ date('d M Y', strtotime($event->event_date)) }}</h3>  
-               </div>
                <div class="timeline-container timeline-left">
                   <div class="timeline-content">
-                     <h2 class="text-lg font-bold mt-4 pb-2">{{ $event->title }}</h2>
+                     <h3 class="text-lg font-bold text-right">{{ date('d M Y', strtotime($event->event_date)) }}</h3> 
+                     <h2 class="text-lg font-bold mt-2 pb-2">{{ $event->title }}</h2>
                      <p class="text-xs text-gray-600">{{ $event->description }}</p>
                      <!-- Admin edit & delete options -->
                      <div class="flex space-x-2 justify-end">
@@ -63,12 +63,10 @@
 
                <!-- Right side of the timeline -->
                @elseif($loop->even)
-               <div class="timeline-date-left">
-                  <h3 class="text-lg font-bold">{{ date('d M Y', strtotime($event->event_date)) }}</h3>  
-               </div>
                <div class="timeline-container timeline-right">  
                   <div class="timeline-content">
-                     <h2 class="text-lg font-bold">{{ $event->title }}</h2>
+                     <h3 class="text-lg font-bold">{{ date('d M Y', strtotime($event->event_date)) }}</h3> 
+                     <h2 class="text-lg font-bold mt-2 pb-2">{{ $event->title }}</h2>
                      <p class="text-xs text-gray-600">{{ $event->description }}</p>
                      <!-- Admin edit & delete options -->
                      <div class="flex space-x-2 justify-end">
@@ -83,10 +81,16 @@
                      </div>
                   </div>
                </div>
+
                @endif
+
             @endforeach
+
          @endforeach 
+
       </div>
+
+      <!-- / Timeline display -->
 
       <!-- Event pagination -->
       <div class="w-1/2 mx-auto mt-10">

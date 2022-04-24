@@ -1838,88 +1838,62 @@ select {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 /* Timeline */
-.timline-outer {
+/* The actual timeline */
+.timeline {
   position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
 }
-.timeline-outer::after {
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
   content: '';
   position: absolute;
   width: 6px;
-  background-color: gray;
+  background-color: steelblue;
   top: 0;
   bottom: 0;
   left: 50%;
   margin-left: -3px;
 }
+/* Container around content */
 .timeline-container {
-  padding: 10px 40px;
+  padding: 5px 20px;
   position: relative;
+  background-color: white;
+
   width: 50%;
 }
+/* The circles on the timeline */
 .timeline-container::after {
   content: '';
   position: absolute;
   width: 25px;
   height: 25px;
   right: -13px;
-  background-color: rgb(245, 239, 239);
-  border: 4px solid gray;
-  top: 20px;
+  background-color: steelblue;
+  border: 4px solid lightblue;
+  top: 15px;
   border-radius: 50%;
   z-index: 1;
 }
+/* Place the container to the left */
 .timeline-left {
   left: 0;
 }
-.timeline-left::before {
-  content: " ";
-  height: 0;
-  position: absolute;
-  top: 22px;
-  width: 0;
-  z-index: 1;
-  right: 30px;
-  border: medium solid gray;
-  border-width: 10px 0 10px 10px;
-  border-color: transparent transparent transparent grey;
-}
+/* Place the container to the right */
 .timeline-right {
   left: 50%;
 }
-.timeline-right::before {
-  content: " ";
-  height: 0;
-  position: absolute;
-  top: 22px;
-  width: 0;
-  z-index: 1;
-  left: 30px;
-  border: medium solid gray;
-  border-width: 10px 10px 10px 0;
-  border-color: transparent grey transparent transparent;
-}
+/* Fix the circle for containers on the right side */
 .timeline-right::after {
   left: -12px;
 }
+/* The actual content */
 .timeline-content {
-  padding: 20px 30px;
+  padding: 10px 10px;
+  background-color: white;
   position: relative;
-  border: 1px solid gray;
   border-radius: 6px;
-}
-.timeline-date-right {
-  position: absolute;
-  width: 200px;
-  top: 10%;
-  left: 115%;
-  font-weight: bold;
-}
-.timeline-date-left {
-  position: absolute;
-  width: 200px;
-  top: 10%;
-  right: 98%;
-  font-weight: bold;
 }
 /* End Timeline */
 .hover\:border-green-500:hover {
@@ -2155,3 +2129,12 @@ select {
     padding-right: 2rem;
   }
 }
+
+
+
+
+
+
+
+
+
